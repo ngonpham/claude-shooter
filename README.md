@@ -17,6 +17,15 @@ from a CDN. Everything else is generated at runtime.
 It was built by an AI agent from five prompts, recorded verbatim in
 [PROMPTS.md](PROMPTS.md).
 
+## Second game: Điện Biên Phủ 1954
+
+[`dienbienphu/index.html`](dienbienphu/index.html) is a five-level campaign built on the same
+engine: Him Lam, Độc Lập, the Mường Thanh airfield, Hill A1 and the De Castries command bunker,
+fought with a PPSh-41, a DP-27, a TT-33, a scoped Mosin-Nagant and stick grenades. The container
+yard is replaced by a heightfield battlefield with trenches, shell holes and a river, and each
+battle adds its own hour, weather and opening. It is also a single HTML file with no assets; see
+[dienbienphu/README.md](dienbienphu/README.md) (in Vietnamese).
+
 ## Running it
 
 Open `index.html` in any desktop browser. That is the whole installation process.
@@ -205,17 +214,20 @@ pixels thick every edge has to land on a whole device pixel or it smears.
 
 ```
 index.html              the entire game
+dienbienphu/index.html  Điện Biên Phủ 1954, the five-level campaign on the same engine
 PROMPTS.md              the prompts that specify it, verbatim
 screenshots/            images used by this README
 tools/test-harness.js   collision, weapon and AI test suite
 tools/autoplay-bot.js   pathfinding bot for unattended regression runs
+tools/dbp-smoke.mjs     headless smoke run over all five Điện Biên Phủ levels
 ```
 
-The two files in `tools/` are development-only. Neither is referenced by `index.html`; they
-are pasted into the console or injected over the DevTools protocol. The harness exposes
-collision audits, weapon accuracy and hit-fidelity tests, map boundary probes and an enemy
-watchdog. The bot plays full rounds on its own with configurable aim error and reaction
-delay, which is how the collision and AI fixes were regression tested.
+The files in `tools/` are development-only. None is referenced by either game; the harness
+and the bot are pasted into the console or injected over the DevTools protocol. The harness
+exposes collision audits, weapon accuracy and hit-fidelity tests, map boundary probes and an
+enemy watchdog. The bot plays full rounds on its own with configurable aim error and reaction
+delay, which is how the collision and AI fixes were regression tested. `dbp-smoke.mjs` runs
+under Node with Playwright and drives each Điện Biên Phủ level from load to planted flag.
 
 ## License
 
