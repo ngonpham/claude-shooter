@@ -24,6 +24,15 @@ bấm **XUẤT KÍCH** — cú click đó cấp pointer lock. `Esc` để tạm 
 
 Cần WebGL và Pointer Lock; không hỗ trợ cảm ứng. Nguồn ngoài duy nhất là three.js r128 từ CDN.
 
+## Chế độ MMORPG
+
+Thêm `?mmo=1` (`dienbienphu/?mmo=1`) để vào chế độ trực tuyến: năm chiến trường thành năm vùng của
+một máy chủ bền vững, nhiều người cùng đánh, luyện kỹ năng theo từng khẩu súng, nhận nhiệm vụ, lập tổ
+đội, chat, nhặt chiến lợi phẩm. Máy chủ (`node mmo/server.mjs`) và luật chơi mô phỏng theo Ryzom Core;
+không có máy chủ thì vẫn chơi một mình bằng shard chạy ngay trong tab. Xem [mmo/README.md](../mmo/README.md).
+
+![Bảng kỹ năng trong chế độ MMORPG](../screenshots/dbp-mmo-skills.jpg)
+
 ## Năm màn
 
 | Màn | Trận | Thời điểm | Mục tiêu | Đặc trưng |
@@ -116,3 +125,6 @@ node tools/dbp-smoke.mjs 4        # chỉ đồi A1
 ```
 
 Đặt `THREE_JS=/đường/dẫn/three.min.js` nếu máy không truy cập được CDN.
+
+Chế độ MMORPG có bộ kiểm thử riêng: `node --test mmo/test` cho shard và `node tools/mmo-smoke.mjs`
+chạy máy chủ thật với hai trình duyệt headless — xem [mmo/README.md](../mmo/README.md#kiểm-thử).

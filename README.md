@@ -26,6 +26,13 @@ yard is replaced by a heightfield battlefield with trenches, shell holes and a r
 battle adds its own hour, weather and opening. It is also a single HTML file with no assets; see
 [dienbienphu/README.md](dienbienphu/README.md) (in Vietnamese).
 
+It also has an online mode, `dienbienphu/?mmo=1`: the five battles become five zones of one
+persistent shard where players fight the garrison together, train a skill per weapon, take
+missions, form teams, chat by channel and pick up loot. The shard in [`mmo/`](mmo/) is modelled
+on Ryzom Core's services (tick, welcome, EGS, AIS, IOS, frontend, backup) and runs either under
+`node mmo/server.mjs` with no dependencies or inside the tab when there is no server. See
+[mmo/README.md](mmo/README.md) (in Vietnamese).
+
 ## Running it
 
 Open `index.html` in any desktop browser. That is the whole installation process.
@@ -215,11 +222,13 @@ pixels thick every edge has to land on a whole device pixel or it smears.
 ```
 index.html              the entire game
 dienbienphu/index.html  Điện Biên Phủ 1954, the five-level campaign on the same engine
+mmo/                    the MMO shard and its server (Node, no dependencies), tests
 PROMPTS.md              the prompts that specify it, verbatim
 screenshots/            images used by this README
 tools/test-harness.js   collision, weapon and AI test suite
 tools/autoplay-bot.js   pathfinding bot for unattended regression runs
 tools/dbp-smoke.mjs     headless smoke run over all five Điện Biên Phủ levels
+tools/mmo-smoke.mjs     end-to-end MMO run: real server, two headless browsers
 ```
 
 The files in `tools/` are development-only. None is referenced by either game; the harness
@@ -228,6 +237,7 @@ exposes collision audits, weapon accuracy and hit-fidelity tests, map boundary p
 enemy watchdog. The bot plays full rounds on its own with configurable aim error and reaction
 delay, which is how the collision and AI fixes were regression tested. `dbp-smoke.mjs` runs
 under Node with Playwright and drives each Điện Biên Phủ level from load to planted flag.
+`mmo-smoke.mjs` starts the shard server and plays two soldiers against it in separate browsers.
 
 ## License
 

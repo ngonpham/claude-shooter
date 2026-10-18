@@ -296,6 +296,120 @@
   #boot.hide{display:none;}
   #err{position:absolute;left:0;right:0;bottom:0;max-height:42%;overflow:auto;z-index:99;
     background:rgba(70,0,0,.94);color:#ffd9d5;font:11px/1.55 ui-monospace,Consolas,monospace;padding:10px 14px;display:none;white-space:pre-wrap;}
+
+  /* ---------------- MMO mode (?mmo=1) ---------------- */
+  .mmoOnly{display:none;}
+  body.mmo .mmoOnly{display:block;}
+  body.mmo #timer{font-size:15px;letter-spacing:.22em;color:var(--amber);}
+  #mmoNet{font-size:9.5px;letter-spacing:.2em;color:rgba(236,228,214,.45);margin-top:4px;font-weight:600;}
+  #mmoNet b{color:var(--ok);font-weight:700;}
+  #mmoNet .own{color:var(--amber);}
+
+  #mmoScreen .col{width:min(560px,80vw);}
+  #mmoForm{display:grid;grid-template-columns:120px 1fr;gap:9px 14px;width:100%;align-items:center;margin-top:4px;}
+  #mmoForm label{font-size:10px;letter-spacing:.22em;font-weight:700;color:rgba(236,228,214,.6);}
+  #mmoForm input{pointer-events:auto;font:inherit;font-size:14px;letter-spacing:.06em;color:#fff;padding:9px 11px;
+    background:rgba(236,228,214,.06);border:1px solid rgba(236,228,214,.22);outline:none;user-select:text;}
+  #mmoForm input:focus{border-color:rgba(242,193,78,.75);background:rgba(242,193,78,.06);}
+  #mmoScreen .btns{justify-content:flex-start;}
+  #mmoScreen button.btn{margin-top:20px;}
+  #mmoMsg{color:#ff9a84;min-height:16px;letter-spacing:.08em;}
+  #mmoMsg.ok{color:var(--ok);}
+  #mmoAbout{font-size:11.5px;line-height:1.7;color:rgba(236,228,214,.62);margin-top:14px;max-width:560px;}
+  #mmoAbout b{color:var(--amber);font-weight:700;}
+  #mmoScreen a{pointer-events:auto;color:rgba(242,193,78,.8);text-decoration:none;}
+
+  #mmoBar{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);width:min(440px,40vw);text-align:center;}
+  #mmoBar .who{font-size:10px;letter-spacing:.2em;font-weight:700;color:rgba(236,228,214,.75);display:flex;justify-content:space-between;gap:10px;}
+  #mmoBar .who .rk{color:var(--amber);}
+  #mmoBar .who .mn{color:#f2d18a;}
+  #mmoBar .xp{position:relative;height:8px;margin-top:5px;background:rgba(0,0,0,.55);border:1px solid rgba(236,228,214,.2);overflow:hidden;}
+  #mmoBar .xp span{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#c58b1e,#f2c14e);transition:width .25s;}
+  #mmoBar .xp i{position:absolute;left:0;top:0;bottom:0;background:rgba(226,57,43,.55);}
+  #mmoBar .sk{display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:.16em;color:rgba(236,228,214,.55);margin-top:4px;font-weight:600;}
+  #mmoBar .sk .debt{color:#ff8a78;}
+  #mmoGain{position:absolute;left:50%;bottom:62px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;}
+  #mmoGain div{font-size:11px;font-weight:700;letter-spacing:.18em;color:#f2d18a;text-shadow:0 1px 4px #000;animation:gainUp 1.8s ease-out forwards;}
+  @keyframes gainUp{0%{opacity:0;transform:translateY(8px)}12%{opacity:1;transform:none}75%{opacity:1}100%{opacity:0;transform:translateY(-14px)}}
+  #mmoKeys{position:absolute;left:26px;bottom:96px;font-size:9.5px;letter-spacing:.16em;color:rgba(236,228,214,.45);font-weight:600;}
+  #mmoKeys kbd{font-family:inherit;font-size:9px;font-weight:700;color:rgba(236,228,214,.75);border:1px solid rgba(236,228,214,.25);padding:0 4px;margin-right:3px;}
+  #mmoKeys b{color:var(--ok);}
+
+  #teamFrame{position:absolute;left:26px;top:232px;width:190px;display:flex;flex-direction:column;gap:4px;}
+  #teamFrame .tm{padding:4px 7px;background:rgba(9,7,5,.55);border-left:2px solid var(--ok);font-size:10px;letter-spacing:.12em;font-weight:700;}
+  #teamFrame .tm.dead{border-left-color:var(--red);opacity:.6;}
+  #teamFrame .tm small{color:rgba(236,228,214,.45);font-weight:600;margin-left:4px;}
+  #teamFrame .tm .b{height:4px;margin-top:3px;background:rgba(255,255,255,.12);}
+  #teamFrame .tm .b span{display:block;height:100%;background:#5fd06a;}
+
+  #chat{position:absolute;left:26px;bottom:250px;width:min(430px,38vw);}
+  #chatLog{display:flex;flex-direction:column;gap:2px;max-height:190px;overflow:hidden;justify-content:flex-end;}
+  #chatLog div{font-size:11.5px;line-height:1.4;color:#e9e2d4;text-shadow:0 1px 3px #000,0 0 2px #000;transition:opacity .6s;word-break:break-word;}
+  #chatLog div.old{opacity:0;}
+  #chat.open #chatLog div.old{opacity:.85;}
+  #chat.open #chatLog{background:rgba(9,7,5,.5);padding:4px 6px;max-height:260px;}
+  #chatLog .c-say b{color:#fff;} #chatLog .c-shout b{color:#ffb26b;} #chatLog .c-shout{color:#ffd2ad;}
+  #chatLog .c-team b,#chatLog .c-team{color:#9fdc7a;} #chatLog .c-region b{color:#f2c14e;}
+  #chatLog .c-universe b,#chatLog .c-universe{color:#8fd3e8;} #chatLog .c-tell,#chatLog .c-tell b{color:#f39ad6;}
+  #chatLog .c-sys{color:rgba(236,228,214,.62);font-style:italic;}
+  #chatLog i{font-style:normal;opacity:.55;font-size:10px;letter-spacing:.1em;margin-right:4px;}
+  #chatIn{display:none;pointer-events:auto;width:100%;margin-top:4px;font:inherit;font-size:12.5px;color:#fff;padding:6px 9px;
+    background:rgba(9,7,5,.82);border:1px solid rgba(242,193,78,.55);outline:none;user-select:text;}
+  #chat.open #chatIn{display:block;}
+
+  #mmoHint{position:absolute;left:50%;top:70%;transform:translateX(-50%);font-size:11px;letter-spacing:.22em;font-weight:700;
+    color:#fff;text-shadow:0 2px 6px #000;opacity:0;transition:opacity .25s;white-space:nowrap;}
+  #mmoHint.on{opacity:1;}
+  #mmoHint kbd{font-family:inherit;border:1px solid rgba(255,255,255,.5);padding:1px 6px;margin:0 3px;background:rgba(0,0,0,.4);}
+
+  #mmoDeath{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;
+    background:radial-gradient(ellipse at center,rgba(60,0,0,.25),rgba(20,0,0,.72));z-index:12;}
+  #mmoDeath.on{display:flex;}
+  #mmoDeath .t{font-size:34px;font-weight:800;letter-spacing:.28em;color:#ffb2a4;text-shadow:0 4px 20px #000;}
+  #mmoDeath .s{font-size:12px;letter-spacing:.24em;color:rgba(236,228,214,.7);margin-top:12px;}
+  #mmoDeath .d{font-size:11px;letter-spacing:.16em;color:#ff8a78;margin-top:8px;}
+
+  #mmoPanel{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(780px,92vw);height:min(560px,86vh);
+    display:none;flex-direction:column;z-index:16;background:linear-gradient(180deg,rgba(18,13,9,.97),rgba(10,7,5,.97));
+    border:1px solid rgba(242,193,78,.35);box-shadow:0 30px 80px rgba(0,0,0,.7);pointer-events:auto;}
+  #mmoPanel.on{display:flex;}
+  #mmoTabs{display:flex;border-bottom:1px solid rgba(236,228,214,.14);}
+  #mmoTabs div{flex:1;text-align:center;padding:12px 6px;font-size:11px;letter-spacing:.22em;font-weight:700;cursor:pointer;color:rgba(236,228,214,.5);}
+  #mmoTabs div kbd{font-family:inherit;font-size:9px;border:1px solid rgba(236,228,214,.25);padding:0 4px;margin-left:6px;opacity:.7;}
+  #mmoTabs div.act{color:#fff;background:rgba(242,193,78,.09);box-shadow:inset 0 -2px 0 var(--amber);}
+  #mmoTabs .x{flex:0 0 46px;color:rgba(236,228,214,.6);}
+  #mmoBody{flex:1;overflow:auto;padding:18px 22px;font-size:12.5px;line-height:1.6;color:rgba(236,228,214,.82);user-select:text;}
+  #mmoBody h3{font-size:11px;letter-spacing:.26em;color:var(--amber);margin:4px 0 10px;font-weight:700;}
+  #mmoBody h3:not(:first-child){margin-top:20px;}
+  .mcard{border:1px solid rgba(236,228,214,.12);background:rgba(236,228,214,.03);padding:10px 12px;margin-bottom:8px;display:grid;grid-template-columns:1fr auto;gap:4px 14px;align-items:center;}
+  .mcard .tt{font-weight:700;color:#fff;letter-spacing:.06em;}
+  .mcard .ds{grid-column:1;color:rgba(236,228,214,.6);font-size:11.5px;}
+  .mcard .rw{grid-column:1;font-size:10.5px;letter-spacing:.1em;color:#f2d18a;}
+  .mcard .st{font-size:11px;color:rgba(236,228,214,.7);}
+  .mcard .st.done{color:var(--ok);text-decoration:line-through;opacity:.7;}
+  .mcard .st.cur{color:#fff;}
+  .mcard button,.zrow button,.shop button{grid-row:1/span 3;grid-column:2;pointer-events:auto;cursor:pointer;font:inherit;font-size:10.5px;letter-spacing:.2em;font-weight:700;
+    color:#fff;padding:8px 16px;background:rgba(242,193,78,.1);border:1px solid rgba(242,193,78,.55);}
+  .mcard button:hover,.zrow button:hover,.shop button:hover{background:rgba(242,193,78,.25);}
+  .mcard button.alt{border-color:rgba(236,228,214,.3);background:rgba(236,228,214,.04);}
+  .mcard button:disabled,.shop button:disabled,.zrow button:disabled{opacity:.35;cursor:default;}
+  .sgrid{display:grid;grid-template-columns:150px 50px 1fr 190px;gap:7px 12px;align-items:center;}
+  .sgrid .n{font-weight:700;color:#fff;letter-spacing:.06em;}
+  .sgrid .n.lock{color:rgba(236,228,214,.38);}
+  .sgrid .l{font-family:ui-monospace,Consolas,monospace;color:var(--amber);font-weight:700;}
+  .sgrid .bar2{height:7px;background:rgba(0,0,0,.5);border:1px solid rgba(236,228,214,.18);}
+  .sgrid .bar2 span{display:block;height:100%;background:linear-gradient(90deg,#c58b1e,#f2c14e);}
+  .sgrid .m{font-size:10.5px;color:rgba(236,228,214,.55);}
+  .kv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:rgba(236,228,214,.1);border:1px solid rgba(236,228,214,.1);}
+  .kv div{background:rgba(14,10,7,.95);padding:10px;text-align:center;}
+  .kv b{display:block;font-size:20px;color:#fff;}
+  .kv span{font-size:9px;letter-spacing:.2em;color:rgba(236,228,214,.5);}
+  .shop,.zrow{display:grid;grid-template-columns:1fr auto;gap:2px 14px;align-items:center;border:1px solid rgba(236,228,214,.12);padding:10px 12px;margin-bottom:8px;}
+  .zrow.cur{border-color:rgba(226,57,43,.6);}
+  .shop .tt,.zrow .tt{font-weight:700;color:#fff;letter-spacing:.06em;}
+  .shop .ds,.zrow .ds{color:rgba(236,228,214,.6);font-size:11.5px;}
+  #slots .slot.lock{opacity:.4;}
+  #slots .slot.lock b::after{content:" 🔒";font-size:8px;}
 </style>
 </head>
 <body>
@@ -357,6 +471,18 @@
     <div id="wicon"></div>
     <div id="reloadHint"></div>
   </div>
+
+  <!-- MMO mode -->
+  <div id="mmoGain" class="mmoOnly"></div>
+  <div id="mmoBar" class="mmoOnly">
+    <div class="who"><span><span class="rk" id="mmoRank">CHIẾN SĨ MỚI</span> · <span id="mmoName2">—</span></span><span class="mn" id="mmoMoney">20 ĐỒNG</span></div>
+    <div class="xp"><i id="mmoDebt"></i><span id="mmoXpFill"></span></div>
+    <div class="sk"><span id="mmoSkill">TIỂU LIÊN · CẤP 1</span><span id="mmoXpNum">0 / 60 KN</span></div>
+  </div>
+  <div id="mmoKeys" class="mmoOnly"><kbd>H</kbd><span id="mmoBand">BĂNG GẠC ×2</span> &nbsp; <kbd>X</kbd><span id="mmoSit">NGỒI</span> &nbsp; <kbd>J</kbd>NHIỆM VỤ &nbsp; <kbd>K</kbd>KỸ NĂNG &nbsp; <kbd>↵</kbd>CHAT</div>
+  <div id="teamFrame" class="mmoOnly"></div>
+  <div id="chat" class="mmoOnly"><div id="chatLog"></div><input id="chatIn" maxlength="200" autocomplete="off" spellcheck="false"></div>
+  <div id="mmoHint"></div>
 </div>
 
 <div id="pause"><div class="t">TẠM DỪNG</div><div class="s">BẤM ĐỂ TIẾP TỤC</div>
@@ -420,6 +546,48 @@
     <button class="btn" id="nextBtn">MÀN TIẾP THEO</button>
     <button class="btn alt" id="restartBtn">ĐÁNH LẠI</button>
     <button class="btn alt" id="menuBtn">MENU CHIẾN DỊCH</button>
+  </div>
+</div>
+
+<div id="mmoDeath"><div class="t">ĐỒNG CHÍ ĐÃ NGÃ XUỐNG</div><div class="s" id="mmoDeathS">QUÂN Y ĐANG TỚI · HỒI SINH TẠI ĐIỂM TẬP KẾT</div><div class="d" id="mmoDeathD"></div></div>
+
+<div id="mmoPanel">
+  <div id="mmoTabs">
+    <div data-tab="missions">NHIỆM VỤ<kbd>J</kbd></div>
+    <div data-tab="char">KỸ NĂNG<kbd>K</kbd></div>
+    <div data-tab="shop">QUÂN NHU<kbd>B</kbd></div>
+    <div data-tab="zones">CHIẾN TRƯỜNG<kbd>M</kbd></div>
+    <div class="x" data-tab="close">✕</div>
+  </div>
+  <div id="mmoBody"></div>
+</div>
+
+<div class="screen hide" id="mmoScreen">
+  <div class="slug tl">CHẾ ĐỘ TRỰC TUYẾN<br><b>MÁY CHỦ BỀN VỮNG · ĐÁNH CHUNG</b></div>
+  <div class="slug tr">MÔ PHỎNG THEO<br>RYZOM CORE</div>
+  <div class="col">
+    <div class="eyebrow"><span class="star"></span>ĐIỆN BIÊN PHỦ 1954 · MMORPG</div>
+    <div class="title">MẶT TRẬN<small>NĂM CHIẾN TRƯỜNG · MỘT MÁY CHỦ</small></div>
+    <div class="rule"></div>
+    <div id="mmoForm">
+      <label for="mmoName">TÊN CHIẾN SĨ</label><input id="mmoName" maxlength="16" autocomplete="username" spellcheck="false">
+      <label for="mmoPass">MẬT KHẨU</label><input id="mmoPass" type="password" maxlength="64" autocomplete="current-password">
+      <label for="mmoUrl">MÁY CHỦ</label><input id="mmoUrl" spellcheck="false" placeholder="ws://localhost:8080/shard">
+    </div>
+    <div class="btns">
+      <button class="btn" id="mmoGo">VÀO MÁY CHỦ</button>
+      <button class="btn alt" id="mmoLocal">SHARD CỤC BỘ</button>
+    </div>
+    <div class="hint" id="mmoMsg"></div>
+    <div id="mmoAbout">
+      Tên mới sẽ tự tạo nhân vật. Mỗi lần bắn là một lần <b>luyện kỹ năng</b> của khẩu súng đó — không có cấp nhân vật,
+      chỉ có cây kỹ năng: tiểu liên mở trung liên, tiểu liên hoặc súng ngắn mở súng bắn tỉa. Quân địch có cấp riêng,
+      hồi sinh theo thời gian, và chỉ <b>tổ đội gây sát thương nhiều nhất</b> nhận kinh nghiệm. Ngã xuống sau kỹ năng 10 thì mang
+      <b>nợ kinh nghiệm</b>. Cứ điểm chiếm xong sẽ bị phản kích sau một phút.<br>
+      <b>Shard cục bộ</b> chạy ngay trong tab này (một mình, lưu trong trình duyệt). Chơi chung: chạy
+      <b>node mmo/server.mjs</b> rồi mở địa chỉ máy chủ đó.
+    </div>
+    <div class="hint"><a href="./">← CHIẾN DỊCH MỘT NGƯỜI CHƠI</a></div>
   </div>
 </div>
 
@@ -967,6 +1135,8 @@ const LEVEL_IDX = (()=>{
 })();
 const LV = LEVELS[LEVEL_IDX];
 const OPEN_BRIEF = /[?&]b=1/.test(location.search);
+/* ?mmo=1: the persistent co-operative shard (section 20b, ../mmo/) */
+const MMO_ON = /[?&]mmo=1/.test(location.search);
 const ENV = LV.env;
 
 /* campaign progress — a per-viewer convenience, so it is allowed to fail */
@@ -4163,7 +4333,8 @@ function explode(x,y,z,o){
   /* damage */
   if (o.r && o.dmg && !G.over){
     let tagged = false;
-    for (const e of enemies){
+    /* in the shard an enemy grenade does not score on its own side */
+    if (!MMO_ON || o.owner==='player') for (const e of enemies){
       if (e.dead) continue;
       const p = e.obj.position, ty = p.y + 0.95;
       const d = Math.hypot(p.x-x, ty-y-0.4, p.z-z);
@@ -4448,11 +4619,11 @@ for (let i=0;i<6;i++) NADES.push({ mesh:makeNadeMesh(i<3), stick:i<3, live:false
                                     fuse:0, owner:'player', av:new THREE.Vector3(), rest:false });
 const _nRay = new THREE.Raycaster(), _nStep = new THREE.Vector3(), _nN = new THREE.Vector3();
 function throwNade(from, vel, owner){
-  const pool = NADES.filter(n=> n.stick === (owner==='player'));
+  const pool = NADES.filter(n=> n.stick === (owner!=='enemy'));
   const n = pool.find(n=>!n.live) || pool[0];
   n.live = true; n.rest = false; n.owner = owner;
   n.pos.copy(from); n.v.copy(vel);
-  n.fuse = owner==='player' ? 3.0 : rand(2.6,3.4);
+  n.fuse = owner!=='enemy' ? 3.0 : rand(2.6,3.4);
   n.av.set(rand(-12,12), rand(-6,6), rand(-12,12));
   n.mesh.visible = true; n.mesh.position.copy(from);
   return n;
@@ -4493,10 +4664,10 @@ function updateNades(dt){
       n.mesh.position.copy(n.pos);
       if (n.rest){ n.mesh.rotation.set(PI/2, rand(0,6), 0); n.mesh.position.y = n.pos.y; }
     }
-    if (n.owner!=='player' && player.pos.distanceTo(n.pos) < 9) warn = true;
+    if (n.owner==='enemy' && player.pos.distanceTo(n.pos) < 9) warn = true;
     if (n.fuse <= 0){
       n.live = false; n.mesh.visible = false;
-      explode(n.pos.x, n.pos.y, n.pos.z, {r:7.5, dmg: n.owner==='player'?220:120, owner:n.owner});
+      explode(n.pos.x, n.pos.y, n.pos.z, {r:7.5, dmg: n.owner==='player'?220:(n.owner==='remote'?0:120), owner:n.owner});
     }
   }
   if (warn !== UI._nadeWarn){ UI._nadeWarn = warn; UI.nadeWarn.classList.toggle('on', warn); }
@@ -4537,7 +4708,7 @@ function buildPickup(type, x, z){
   const y = groundAt(x, z, 60) + 0.32;
   g.position.set(x, y, z);
   scene.add(g);
-  PICKUPS.push({type, x, z, y, mesh:g, glow, taken:false, t:Math.random()*6});
+  PICKUPS.push({type, x, z, y, mesh:g, glow, taken:false, t:Math.random()*6, k:PICKUPS.length});
 }
 for (const [t,x,z] of LV.pickups) buildPickup(t,x,z);
 
@@ -4558,10 +4729,11 @@ function updatePickups(dt){
     p.glow.material.opacity = 0.28 + 0.16*Math.sin(p.t*3.1);
     if (!G.running || player.dead) continue;
     if (Math.hypot(player.pos.x-p.x, player.pos.z-p.z) > 1.35 || Math.abs(player.pos.y - p.y) > 1.6) continue;
+    if (MMO_ON){ MMO.touchPickup(p.k); continue; }
     if (p.type==='med'){
-      if (player.hp >= 100) continue;
+      if (player.hp >= player.hpMax) continue;
       const before = player.hp;
-      player.hp = Math.min(100, player.hp + 45);
+      player.hp = Math.min(player.hpMax, player.hp + 45);
       toast('+ BĂNG GẠC  +' + Math.round(player.hp-before) + ' SINH LỰC', '#9fdc7a');
       updateVitalsUI();
     } else if (p.type==='ammo'){
@@ -4629,7 +4801,7 @@ const FLAG = (()=>{
           setTimeout(()=>explode(OBJ.x, OBJ.y+1.0, OBJ.z+5.0, {scale:1.4}), 1250);
           FIRES.push({x:OBJ.x, y:OBJ.y, z:OBJ.z+4.2, s:1.6, acc:0, sm:0});
           G.objectiveDone = true;
-          setTimeout(()=>{ if (!G.over) endGame(true); }, 2600);
+          if (!MMO_ON) setTimeout(()=>{ if (!G.over) endGame(true); }, 2600);
         }
       }
       if (!root.visible) return;
@@ -5188,69 +5360,70 @@ function collapseRig(root){
   }
 }
 
-function buildEnemyModel(rifle){
+function buildEnemyModel(rifle, M){
+  M = M || E_MAT;
   const model = new THREE.Group();
   const body  = new THREE.Group(); model.add(body);
   const legs = [];
   for (const s of [-1,1]){
     const hip = new THREE.Group(); hip.position.set(s*0.135, 0.90, 0); body.add(hip);
-    part(hip, EB(0.19,0.46,0.21), E_MAT.cloth, 0,-0.23,0);
-    part(hip, B(0.08,0.12,0.05), E_MAT.cloth, s*0.06,-0.26,-0.10);          // cargo pocket
+    part(hip, EB(0.19,0.46,0.21), M.cloth, 0,-0.23,0);
+    part(hip, B(0.08,0.12,0.05), M.cloth, s*0.06,-0.26,-0.10);          // cargo pocket
     const knee = new THREE.Group(); knee.position.set(0,-0.46,0); hip.add(knee);
-    part(knee, EB(0.17,0.44,0.19), E_MAT.cloth, 0,-0.22,0);
-    part(knee, B(0.176,0.20,0.198), E_MAT.boot, 0,-0.36,-0.004);          // rangers
-    part(knee, B(0.178,0.09,0.28), E_MAT.boot, 0,-0.42,-0.035);
+    part(knee, EB(0.17,0.44,0.19), M.cloth, 0,-0.22,0);
+    part(knee, B(0.176,0.20,0.198), M.boot, 0,-0.36,-0.004);          // rangers
+    part(knee, B(0.178,0.09,0.28), M.boot, 0,-0.42,-0.035);
     legs.push({hip,knee});
   }
   /* torso: jump smock under canvas webbing. -Z is the front. */
-  capsuleGroup(body, 0.22, 0.46, E_MAT.cloth, 0, 1.20, 0);
-  part(body, EB(0.46,0.30,0.30), E_MAT.cloth, 0, 1.33, -0.005);
-  part(body, B(0.47,0.065,0.31), E_MAT.webb, 0, 1.02, -0.005);           // belt
+  capsuleGroup(body, 0.22, 0.46, M.cloth, 0, 1.20, 0);
+  part(body, EB(0.46,0.30,0.30), M.cloth, 0, 1.33, -0.005);
+  part(body, B(0.47,0.065,0.31), M.webb, 0, 1.02, -0.005);           // belt
   for (const s of [-1,1]){
-    part(body, B(0.05,0.44,0.02), E_MAT.webb, s*0.11, 1.26, -0.215);     // braces, front
-    part(body, B(0.05,0.44,0.02), E_MAT.webb, s*0.11, 1.26, 0.212);      // and back
-    part(body, B(0.10,0.11,0.07), E_MAT.webb, s*0.13, 1.08, -0.19);      // ammo pouches
+    part(body, B(0.05,0.44,0.02), M.webb, s*0.11, 1.26, -0.215);     // braces, front
+    part(body, B(0.05,0.44,0.02), M.webb, s*0.11, 1.26, 0.212);      // and back
+    part(body, B(0.10,0.11,0.07), M.webb, s*0.13, 1.08, -0.19);      // ammo pouches
   }
-  part(body, CYL(0.06,0.06,0.17,10), E_MAT.bag, 0.24, 1.0, 0.08);          // canteen
-  part(body, B(0.30,0.24,0.12), E_MAT.bag, 0, 1.30, 0.24);                 // musette
-  part(body, B(0.22,0.06,0.10), E_MAT.cloth, 0, 1.47, -0.03);              // collar
+  part(body, CYL(0.06,0.06,0.17,10), M.bag, 0.24, 1.0, 0.08);          // canteen
+  part(body, B(0.30,0.24,0.12), M.bag, 0, 1.30, 0.24);                 // musette
+  part(body, B(0.22,0.06,0.10), M.cloth, 0, 1.47, -0.03);              // collar
   /* neck + head, M1 helmet */
-  part(body, CYL(0.062,0.062,0.10,8), E_MAT.skin, 0, 1.53, 0);
+  part(body, CYL(0.062,0.062,0.10,8), M.skin, 0, 1.53, 0);
   const head = new THREE.Group(); head.position.set(0,1.655,0); body.add(head);
-  part(head, new THREE.SphereGeometry(0.132,14,12), E_MAT.skin, 0,0,0);
-  part(head, new THREE.SphereGeometry(0.165,14,10,0,PI*2,0,PI*0.56), E_MAT.helm, 0,0.022,0);
-  part(head, CYL(0.192,0.192,0.022,16), E_MAT.helm, 0,-0.004,0.005);
-  part(head, B(0.02,0.11,0.02), E_MAT.webb, 0.125,-0.07,-0.02);            // chin strap
-  part(head, B(0.02,0.11,0.02), E_MAT.webb,-0.125,-0.07,-0.02);
+  part(head, new THREE.SphereGeometry(0.132,14,12), M.skin, 0,0,0);
+  part(head, new THREE.SphereGeometry(0.165,14,10,0,PI*2,0,PI*0.56), M.helm, 0,0.022,0);
+  part(head, CYL(0.192,0.192,0.022,16), M.helm, 0,-0.004,0.005);
+  part(head, B(0.02,0.11,0.02), M.webb, 0.125,-0.07,-0.02);            // chin strap
+  part(head, B(0.02,0.11,0.02), M.webb,-0.125,-0.07,-0.02);
   /* arms */
   const rig = new THREE.Group(); rig.position.set(0,1.40,0); body.add(rig);
   const arms = [];
   for (const s of [-1,1]){
     const sh = new THREE.Group(); sh.position.set(s*0.275, 0.02, 0); rig.add(sh);
-    part(sh, EB(0.15,0.13,0.165), E_MAT.cloth, 0,-0.03,0);
-    part(sh, EB(0.135,0.34,0.145), E_MAT.cloth, 0,-0.17,0);
+    part(sh, EB(0.15,0.13,0.165), M.cloth, 0,-0.03,0);
+    part(sh, EB(0.135,0.34,0.145), M.cloth, 0,-0.17,0);
     const el = new THREE.Group(); el.position.set(0,-0.34,0); sh.add(el);
-    part(el, EB(0.115,0.27,0.125), E_MAT.cloth, 0,-0.135,0);
-    part(el, B(0.09,0.10,0.11), E_MAT.skin, 0,-0.30,0.01);
+    part(el, EB(0.115,0.27,0.125), M.cloth, 0,-0.135,0);
+    part(el, B(0.09,0.10,0.11), M.skin, 0,-0.30,0.01);
     arms.push({sh,el});
   }
   /* weapon: MAT-49 sub-machine gun, or the long MAS-36 rifle */
   const gun = new THREE.Group(); rig.add(gun);
   let gunMuzzle;
   if (!rifle){
-    part(gun, B(0.055,0.075,0.28), E_MAT.gun, 0,0,-0.10);
-    part(gun, CYLZ(0.020,0.020,0.20,8), E_MAT.gun, 0,0.006,-0.33);
-    part(gun, B(0.035,0.14,0.04), E_MAT.gun, 0,-0.10,-0.14, 0.35,0,0);
-    part(gun, B(0.04,0.10,0.05), E_MAT.gun, 0,-0.075,0.03);
-    part(gun, B(0.012,0.012,0.22), E_MAT.metal, 0.02,0.0,0.15);
-    part(gun, B(0.012,0.012,0.22), E_MAT.metal,-0.02,0.0,0.15);
-    part(gun, B(0.05,0.07,0.012), E_MAT.metal, 0,-0.01,0.26);
+    part(gun, B(0.055,0.075,0.28), M.gun, 0,0,-0.10);
+    part(gun, CYLZ(0.020,0.020,0.20,8), M.gun, 0,0.006,-0.33);
+    part(gun, B(0.035,0.14,0.04), M.gun, 0,-0.10,-0.14, 0.35,0,0);
+    part(gun, B(0.04,0.10,0.05), M.gun, 0,-0.075,0.03);
+    part(gun, B(0.012,0.012,0.22), M.metal, 0.02,0.0,0.15);
+    part(gun, B(0.012,0.012,0.22), M.metal,-0.02,0.0,0.15);
+    part(gun, B(0.05,0.07,0.012), M.metal, 0,-0.01,0.26);
     gunMuzzle = new THREE.Object3D(); gunMuzzle.position.set(0,0.006,-0.45); gun.add(gunMuzzle);
   } else {
-    part(gun, B(0.05,0.06,0.62), E_MAT.wood, 0,-0.012,-0.12);
-    part(gun, CYLZ(0.012,0.012,0.36,8), E_MAT.gun, 0,0.016,-0.56);
-    part(gun, B(0.04,0.05,0.18), E_MAT.gun, 0,0.022,0.02);
-    part(gun, B(0.048,0.11,0.20), E_MAT.wood, 0,-0.05,0.24);
+    part(gun, B(0.05,0.06,0.62), M.wood, 0,-0.012,-0.12);
+    part(gun, CYLZ(0.012,0.012,0.36,8), M.gun, 0,0.016,-0.56);
+    part(gun, B(0.04,0.05,0.18), M.gun, 0,0.022,0.02);
+    part(gun, B(0.048,0.11,0.20), M.wood, 0,-0.05,0.24);
     gunMuzzle = new THREE.Object3D(); gunMuzzle.position.set(0,0.016,-0.75); gun.add(gunMuzzle);
   }
   const hbHead = new THREE.Mesh(B(0.34,0.34,0.34), INVIS); hbHead.position.set(0,1.67,0); body.add(hbHead);
@@ -5261,7 +5434,7 @@ function buildEnemyModel(rifle){
   return { model, body, legs, arms, rig, gun, gunMuzzle, head, hbHead, hbBody, hbLegs };
 }
 /* name tag + health bar sprite */
-function makeTag(name){
+function makeTag(name, col){
   const c = document.createElement('canvas'); c.width=256; c.height=76;
   const t = new THREE.CanvasTexture(c);
   t.encoding = THREE.sRGBEncoding;
@@ -5276,7 +5449,7 @@ function makeTag(name){
     ctx.textAlign='center'; ctx.textBaseline='middle';
     ctx.lineWidth = 5; ctx.strokeStyle='rgba(0,0,0,.85)';
     ctx.strokeText(name,128,22);
-    ctx.fillStyle = alerted ? '#ff6a58' : '#e9eef3';
+    ctx.fillStyle = alerted ? '#ff6a58' : (col || '#e9eef3');
     ctx.fillText(name,128,22);
     const bx=40,bw=176,by=44,bh=13;
     ctx.fillStyle='rgba(0,0,0,.72)'; ctx.fillRect(bx-2,by-2,bw+4,bh+4);
@@ -5373,7 +5546,7 @@ const player = {
   pos:new THREE.Vector3(SPAWN.x, terrainH(SPAWN.x,SPAWN.z), SPAWN.z),   // FEET
   vel:new THREE.Vector3(),
   yaw: SPAWN.yaw, pitch: 0,
-  hp:100,
+  hp:100, hpMax:100,
   height: STAND_H, eye: STAND_H,
   onGround:true, crouch:false, sprint:false,
   bob:0, bobAmp:0, stepPhase:0,
@@ -5425,8 +5598,8 @@ $('mapMode').textContent = LV.code;
 
 function updateVitalsUI(){
   UI.hpNum.textContent = Math.max(0,Math.round(player.hp));
-  UI.hpFill.style.transform = `scaleX(${clamp(player.hp/100,0,1)})`;
-  UI.hpFill.classList.toggle('low', player.hp<=30);
+  UI.hpFill.style.transform = `scaleX(${clamp(player.hp/player.hpMax,0,1)})`;
+  UI.hpFill.classList.toggle('low', player.hp<=player.hpMax*0.3);
 }
 function updateNadeUI(){
   let h = '';
@@ -5448,6 +5621,7 @@ function updateAmmoUI(){
   UI.slots.forEach((s,i)=>s.classList.toggle('act', i===player.weapon));
 }
 function updateObjectiveUI(){
+  if (MMO_ON){ MMO.objectiveUI(); return; }
   if (!G.objUnlocked){
     UI.objective.classList.remove('flag');
     UI.objective.innerHTML = `<b>${G.kills}</b> / ${G.total} TIÊU DIỆT`;
@@ -5463,10 +5637,10 @@ function showHitmark(kill){
 }
 const HEADSHOT_ICON = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="7.5" stroke="#ffb340" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="#ffb340"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4" stroke="#ffb340" stroke-width="2"/></svg>`;
 const SKULL_ICON = `<svg width="14" height="14" viewBox="0 0 24 24" fill="#dfe6ec" opacity=".8"><path d="M12 2C7 2 3.5 5.4 3.5 10c0 2.6 1.2 4.6 3 5.9V19a2 2 0 002 2h1v-3h1.2v3h2.6v-3H14.5v3h1a2 2 0 002-2v-3.1c1.8-1.3 3-3.3 3-5.9C20.5 5.4 17 2 12 2zM8.6 12.2a1.9 1.9 0 110-3.8 1.9 1.9 0 010 3.8zm6.8 0a1.9 1.9 0 110-3.8 1.9 1.9 0 010 3.8z"/></svg>`;
-function killFeed(victim, head, blast){
+function killFeed(victim, head, blast, killer){
   const el = document.createElement('div');
   el.className='kf';
-  el.innerHTML = `<span class="me">BẠN</span><span class="ic">${head?HEADSHOT_ICON:SKULL_ICON}</span><span class="vic">${victim}</span>${blast?'<span class="ic" style="opacity:.6;font-size:9px;letter-spacing:.2em">LỰU ĐẠN</span>':''}`;
+  el.innerHTML = `<span class="me">${killer ? killer : 'BẠN'}</span><span class="ic">${head?HEADSHOT_ICON:SKULL_ICON}</span><span class="vic">${victim}</span>${blast?'<span class="ic" style="opacity:.6;font-size:9px;letter-spacing:.2em">LỰU ĐẠN</span>':''}`;
   UI.feed.appendChild(el);
   setTimeout(()=>{ el.classList.add('out'); setTimeout(()=>el.remove(),320); }, 4200);
   while (UI.feed.children.length>5) UI.feed.firstChild.remove();
@@ -5668,6 +5842,7 @@ function drawMinimap(){
     ctx.fillRect(p.x-0.7, p.z-0.7, 1.4, 1.4);
   }
   /* the objective once it is live */
+  if (MMO_ON) MMO.drawMap(ctx);
   if (G.objUnlocked && !G.objectiveDone){
     ctx.save(); ctx.translate(OBJ.x, OBJ.z); ctx.rotate(-player.yaw);
     const pulse = 1.6 + Math.sin(perfNow*0.006)*0.4;
@@ -5733,6 +5908,7 @@ let sensScale = 1;
 
 const GAME_KEYS = ['Space','KeyR','Digit1','Digit2','Digit3','Digit4','KeyV','KeyG','KeyE','Tab','ControlLeft'];
 addEventListener('keydown', e=>{
+  if (MMO_ON && MMO.onKey(e)) return;
   if (e.repeat) { if (GAME_KEYS.includes(e.code)) e.preventDefault(); return; }
   keys[e.code]=true;
   if (e.code==='Space') player.spaceEdge = true;
@@ -5765,7 +5941,9 @@ addEventListener('wheel', e=>{
   if (!G.running) return;
   const n = WEAPONS.length;
   const dir = e.deltaY>0?1:-1;
-  switchWeapon((player.weapon+dir+n)%n);
+  let i = player.weapon;
+  do { i = (i+dir+n)%n; } while (MMO_ON && !MMO.canUse(i) && i!==player.weapon);
+  switchWeapon(i);
 }, {passive:true});
 addEventListener('contextmenu', e=>e.preventDefault());
 
@@ -5776,8 +5954,8 @@ document.addEventListener('pointerlockchange', ()=>{
     player.ads=false; player.adsK=0; player.adsEase=0;
     UI._scopeK=-1; UI.scope.style.opacity=0; compMat.uniforms.scope.value=0;
     UI.cross.classList.remove('hidden'); vmRoot.visible=true;
-    UI.pause.classList.add('on');
-    SFX.suspend();
+    if (!(MMO_ON && MMO.panelOpen())) UI.pause.classList.add('on');
+    if (!MMO_ON) SFX.suspend();
   } else if (locked){
     G.paused = false;
     UI.pause.classList.remove('on');
@@ -5792,11 +5970,11 @@ function requestLock(){
     if (document.pointerLockElement === document.body) return;
     if (!G.started || G.over) return;
     G.paused = true; G.running = false;
-    UI.pause.classList.add('on');
+    if (!(MMO_ON && MMO.panelOpen())) UI.pause.classList.add('on');
   }, 350);
 }
 UI.pause.addEventListener('click', ()=>{ SFX.init(); requestLock(); });
-$('pauseMenuBtn').addEventListener('click', e=>{ e.stopPropagation(); location.href = location.pathname; });
+$('pauseMenuBtn').addEventListener('click', e=>{ e.stopPropagation(); if (MMO_ON) MMO.logout(); else location.href = location.pathname; });
 $('goBtn').addEventListener('click', e=>{ e.stopPropagation(); SFX.init(); startGame(); });
 $('restartBtn').addEventListener('click', e=>{ e.stopPropagation(); restart(); });
 $('menuBtn').addEventListener('click', e=>{ e.stopPropagation(); location.href = location.pathname; });
@@ -5821,6 +5999,7 @@ function currentSpreadMult(){
   if (!player.onGround) s += w.airSpread;
   if (player.crouch && speed<0.6) s *= w.crouchMult;
   s *= lerp(1, w.adsSpread, player.adsEase);
+  if (MMO_ON) s *= MMO.mod(w.id).spread;
   return s;
 }
 
@@ -5835,6 +6014,7 @@ function toggleADS(){ setADS(!player.ads); }
 
 function switchWeapon(i){
   if (i===player.weapon && player.switchTo<0) return;
+  if (MMO_ON && !MMO.canUse(i)){ MMO.lockedWeapon(i); return; }
   if (player.switching>0) return;
   if (player.reloadT>0){ player.reloadT=0; }
   setADS(false);
@@ -5917,7 +6097,7 @@ function fireWeapon(){
     .addScaledVector(_fwd, 0.55).addScaledVector(_rgt, 0.16).addScaledVector(upv, -0.12);
 
   const spread = currentSpreadMult();
-  let anyHit=false, killedSomething=false, headHit=false;
+  let anyHit=false, killedSomething=false, headHit=false, lastEnd=null;
   const targets = enemyHitMeshes.concat(worldSolid);
 
   for (let p=0;p<w.pellets;p++){
@@ -5955,6 +6135,7 @@ function fireWeapon(){
         fxImpactWall(h.point, _hitN, h.distance, isDirt(h.object));
       }
     }
+    lastEnd = end;
     if (p===0 || w.pellets<=3 || Math.random()<0.45)
       spawnTracer(_muzzleWorld, end, w.id==='sniper'?0xfff3c8:0xffd27a, w.id==='sniper'?2.1:1);
   }
@@ -5965,6 +6146,7 @@ function fireWeapon(){
     showHitmark(killedSomething);
   }
 
+  if (MMO_ON) MMO.shot(_muzzleWorld, lastEnd, player.weapon);
   /* --- feedback --- */
   SFX.gunshot(w.sound, 0, 0);
   alertToGunfire(w.noise || 34);
@@ -6014,8 +6196,8 @@ function fireWeapon(){
    left — which is both unconvincing and a way to lose on the clock hunting for
    the last man. Anyone inside earshot walks the shot in instead.
    ------------------------------------------------------------------------- */
-function alertSquad(radius, spread, line, chance){
-  const px = player.pos.x, pz = player.pos.z;
+function alertSquad(radius, spread, line, chance, ox, oz){
+  const px = ox===undefined ? player.pos.x : ox, pz = oz===undefined ? player.pos.z : oz;
   /* as the squad thins the survivors stop being a patrol and start being a
      manhunt — otherwise the last man is a hide-and-seek chore on the clock */
   const alive = enemies.reduce((n,e)=> n + (e.dead?0:1), 0);
@@ -6051,11 +6233,13 @@ function alertToGunfire(radius){
 }
 
 function damageEnemy(e, dmg, head, dir, point, blast){
-  e.hp -= dmg;
   e.flinch = Math.min(1, e.flinch + (head?0.9:0.55));
   e.alerted = true;
   e.lastSeen = 0;
   if (e.state===ST.PATROL){ e.state=ST.ALERT; e.reactT = rand(0.14,0.30); }
+  /* the shard judges the hit and announces the death */
+  if (MMO_ON){ MMO.claimHit(e, dmg, head, blast); return false; }
+  e.hp -= dmg;
   if (e.hp<=0){
     killEnemy(e, head, dir, blast);
     return true;
@@ -6064,14 +6248,16 @@ function damageEnemy(e, dmg, head, dir, point, blast){
   return false;
 }
 
-function killEnemy(e, head, dir, blast){
+function killEnemy(e, head, dir, blast, killer){
   e.dead = true; e.hp=0; e.state=ST.DEAD; e.deathT=0;
   e.deathDir = (dir? Math.atan2(dir.x,dir.z) : 0);
   e.tag.sprite.visible = false;
   rebuildHitMeshes();
-  G.kills++;
-  if (head) G.headshots++;
-  killFeed(e.name, head, blast);
+  if (!killer){
+    G.kills++;
+    if (head) G.headshots++;
+  }
+  killFeed(e.name, head, blast, killer);
   SFX.killChime();
   SFX.enemyDeath(clamp((e.obj.position.x-camera.position.x)/14,-1,1),
                  e.obj.position.distanceTo(camera.position));
@@ -6084,8 +6270,8 @@ function killEnemy(e, head, dir, blast){
   alertSquad(30 + G.kills*7, 5,
              ex => pick([[e.name+' EST TOUCHÉ !', e.name+' trúng đạn'],
                          ['HOMME À TERRE, REGROUPEZ-VOUS', 'có người ngã, tập hợp lại'],
-                         ['ON A PERDU '+e.name, 'mất '+e.name]]), 0.85);
-  if (G.kills >= G.total) unlockObjective();
+                         ['ON A PERDU '+e.name, 'mất '+e.name]]), 0.85, killer ? e.obj.position.x : undefined, killer ? e.obj.position.z : undefined);
+  if (!MMO_ON && G.kills >= G.total) unlockObjective();
 }
 
 /* viewmodel recoil impulse */
@@ -6115,7 +6301,7 @@ function damagePlayer(amount, fromPos){
     player.hp=0; player.dead=true;
     setADS(false);
     updateVitalsUI();
-    endGame(false);
+    if (MMO_ON) MMO.died(); else endGame(false);
   }
 }
 /* =========================================================================
@@ -6129,8 +6315,17 @@ const _revDir = new THREE.Vector3();
 function enemyEye(e, out){
   return out.set(e.obj.position.x, e.obj.position.y+1.62, e.obj.position.z);
 }
+/* Whoever this soldier is fighting. Alone that is always you; on the shard the
+   simulation owner points it at the nearest Viet, local or remote. */
+const LOCAL_T = {
+  local:true, pid:0, pos:player.pos, vel:player.vel,
+  get crouch(){ return player.crouch; }, get height(){ return player.height; },
+  get dead(){ return player.dead || (MMO_ON && !G.running); },
+  hurt(dmg, e){ if (!this.dead) damagePlayer(dmg * (MMO_ON ? MMO.dmgMul(e) : 1), e.obj.position); }
+};
+let AIT = LOCAL_T;
 function playerChest(out){
-  return out.set(player.pos.x, player.pos.y + player.height*0.62, player.pos.z);
+  return out.set(AIT.pos.x, AIT.pos.y + AIT.height*0.62, AIT.pos.z);
 }
 function hasLOS(e){
   enemyEye(e,_eEye);
@@ -6187,7 +6382,7 @@ function enemyShoot(e, atPoint){
   playerChest(_ePos);
   const aim = atPoint ? _tmpAim.set(atPoint.x, terrainH(atPoint.x, atPoint.z) + 1.2, atPoint.z) : _ePos;
   const dist = muzzle.distanceTo(_ePos);
-  const speed = Math.hypot(player.vel.x, player.vel.z);
+  const speed = Math.hypot(AIT.vel.x, AIT.vel.z);
   /* Human-ish accuracy: worse at range, worse against a moving target, and it
      tightens the longer they have been shooting at you — standing still is what
      gets you killed, not being seen.
@@ -6198,7 +6393,7 @@ function enemyShoot(e, atPoint){
      crack and the dust puff as a warning and has a couple of seconds to break
      contact, and the shots that do land later feel earned. */
   const warm = atPoint ? 2.2 : lerp(1.55, 0.80, clamp((e.engage||0)/5.5, 0, 1));
-  const err = 0.040 * warm * (1 + dist*0.028) * (1 + speed*0.075) * (player.crouch?1.15:1) * (e.rifle?0.72:1);
+  const err = 0.040 * warm * (1 + dist*0.028) * (1 + speed*0.075) * (AIT.crouch?1.15:1) * (e.rifle?0.72:1);
   const dir = aim.clone().sub(muzzle).normalize();
   const rgt = new THREE.Vector3().crossVectors(dir, _up).normalize();
   const upv = new THREE.Vector3().crossVectors(rgt, dir).normalize();
@@ -6215,7 +6410,7 @@ function enemyShoot(e, atPoint){
   const wallDist = hits.length ? hits[0].distance : 90;
 
   /* ray vs vertical cylinder around the player */
-  const px = player.pos.x - muzzle.x, pz = player.pos.z - muzzle.z;
+  const px = AIT.pos.x - muzzle.x, pz = AIT.pos.z - muzzle.z;
   const dx = dir.x, dz = dir.z;
   const dd = dx*dx + dz*dz;
   let tHit = Infinity;
@@ -6226,7 +6421,7 @@ function enemyShoot(e, atPoint){
       const lateral = Math.hypot(cx,cz);
       if (lateral < P_RADIUS*1.05){
         const y = muzzle.y + dir.y*t;
-        if (y > player.pos.y+0.05 && y < player.pos.y+player.height) tHit = t;
+        if (y > AIT.pos.y+0.05 && y < AIT.pos.y+AIT.height) tHit = t;
       }
     }
   }
@@ -6246,9 +6441,10 @@ function enemyShoot(e, atPoint){
     }
   }
 
+  let dealt = 0;
   if (clearPath){
-    const dmg = (e.rifle ? rand(7.5, 11) : rand(4, 6.5)) * clamp(1 - Math.max(0,dist-25)/55, 0.5, 1);
-    damagePlayer(dmg, e.obj.position);
+    dealt = (e.rifle ? rand(7.5, 11) : rand(4, 6.5)) * clamp(1 - Math.max(0,dist-25)/55, 0.5, 1);
+    if (AIT.local) AIT.hurt(dealt, e);
   } else if (hits.length){
     const n = hits[0].face ? hits[0].face.normal.clone().transformDirection(hits[0].object.matrixWorld)
                            : new THREE.Vector3(0,1,0);
@@ -6258,6 +6454,7 @@ function enemyShoot(e, atPoint){
       SFX.impactWall(clamp((hits[0].point.x-camera.position.x)/6,-1,1), 2);
     }
   }
+  if (MMO_ON) MMO.npcFired(e, muzzle, end, dealt);
 }
 
 /* a French egg grenade lobbed at where the Viet was last seen */
@@ -6270,6 +6467,7 @@ function enemyThrow(e, target){
   const T = clamp(d/11, 0.8, 1.7);
   _thv.set(dx/T, (ty - _thr.y + 0.5*16.5*T*T)/T, dz/T);
   throwNade(_thr, _thv, 'enemy');
+  if (MMO_ON) MMO.npcNade(e, _thr, _thv);
   e.nadeT = rand(16,26);
   G.enemyNadeT = rand(9,15);
   say(e, pick([['GRENADE !','lựu đạn!'], ['ATTENTION, GRENADE !','coi chừng lựu đạn']]), true);
@@ -6317,13 +6515,15 @@ function pickCover(e, tx, tz){
    ------------------------------------------------------------------------- */
 const COMMS_COOLDOWN = {};
 function comms(e, fr, vi, priority){
-  if (!G.running || G.over) return;
+  if (MMO_ON){ if (!MMO.owner || !MMO.inWorld) return; }
+  else if (!G.running || G.over) return;
   const now = perfNow;
   if (!priority && COMMS_COOLDOWN.last && now - COMMS_COOLDOWN.last < 1700) return;
   if (COMMS_COOLDOWN.last && now - COMMS_COOLDOWN.last < 420) return;
   COMMS_COOLDOWN.last = now;
   pushComms(e ? e.name : 'PC GONO', fr, vi);
   SFX.radio();
+  if (MMO_ON) MMO.npcSay(e, fr, vi);
 }
 /* a line is a [french, vietnamese] pair */
 function say(e, pair, priority){ comms(e, pair[0], pair[1], priority); }
@@ -6335,7 +6535,7 @@ let _sweepAt = 0;
 /* compass bearing of an enemy relative to the player, for callouts */
 /* where the Viet is, as seen from the man calling it in */
 function bearingIdx(e){
-  const dx = player.pos.x - e.obj.position.x, dz = player.pos.z - e.obj.position.z;
+  const dx = AIT.pos.x - e.obj.position.x, dz = AIT.pos.z - e.obj.position.z;
   const a = Math.atan2(dx, -dz);                       // 0 = north (-Z)
   return Math.round(((a + PI*2) % (PI*2)) / (PI/4)) % 8;
 }
@@ -6365,22 +6565,30 @@ function updateCombatDirector(){
       _sweepAt = perfNow + 6000;
       for (const e of enemies){
         if (e.dead || e.canSee) continue;
+        const T = e.tgt || LOCAL_T;
+        if (T.dead) continue;
         e.alerted = true; e.state = ST.COMBAT; e.saidLost = true; e.cover = null;
         e.hunt = Math.max(e.hunt, 9);
-        const f = nearestFree(player.pos.x + rand(-4,4), player.pos.z + rand(-4,4), 0.5, 1.7, 6);
+        const f = nearestFree(T.pos.x + rand(-4,4), T.pos.z + rand(-4,4), 0.5, 1.7, 6);
         e.lastKnown.set(f[0], e.obj.position.y, f[1]);
       }
     }
   }
 
   if (G.grace > 0) return;      // spotted and closing, but holding fire
-  _active.sort((a,b)=> a.obj.position.distanceToSquared(camera.position)
-                     - b.obj.position.distanceToSquared(camera.position));
-  for (let i=0;i<Math.min(MAX_SHOOTERS,_active.length);i++) _active[i].mayFire = true;
+  const tp = e => (e.tgt || LOCAL_T).pos;
+  _active.sort((a,b)=> a.obj.position.distanceToSquared(tp(a)) - b.obj.position.distanceToSquared(tp(b)));
+  /* the ration is per target: two shooters each, however many of you there are */
+  const ration = new Map();
+  for (const e of _active){
+    const k = e.tgt || LOCAL_T, n = ration.get(k) || 0;
+    if (n < MAX_SHOOTERS){ e.mayFire = true; ration.set(k, n+1); }
+  }
 }
 
 function updateEnemy(e, dt){
   const obj = e.obj, p = e.p;
+  AIT = e.tgt || LOCAL_T;
 
   /* ---------- death ---------- */
   if (e.dead){
@@ -6417,12 +6625,16 @@ function updateEnemy(e, dt){
     }
     return;
   }
+  /* somebody else's screen is running this one: follow the stream */
+  if (e.puppet){ MMO.puppetStep(e, dt); animateEnemy(e, dt); return; }
+  /* nobody left to fight: stand down rather than shoot at a ghost */
+  if (AIT.dead){ e.canSee = false; if (e.state!==ST.PATROL && e.lastSeen > 3){ e.state = ST.PATROL; e.alerted = false; } }
 
   /* ---------- perception ---------- */
   e.losTimer -= dt;
   if (e.losTimer<=0){
     e.losTimer = 0.13 + Math.random()*0.06;
-    const see = hasLOS(e);
+    const see = !AIT.dead && hasLOS(e);
     if (see && !e.canSee && e.state===ST.PATROL){
       e.state = ST.ALERT;
       e.reactT = rand(0.30,0.80);          // human reaction delay
@@ -6729,6 +6941,10 @@ function updateEnemy(e, dt){
   e.yaw += dy * Math.min(1, dt*(e.state===ST.COMBAT?9:4.2));
   obj.rotation.y = e.yaw;
 
+  animateEnemy(e, dt);
+}
+function animateEnemy(e, dt){
+  const obj = e.obj, p = e.p;
   /* ---------- animation ---------- */
   const walk = clamp(e.speed/2.4,0,1);
   e.walkPhase += dt*(3.0 + e.speed*2.2);
@@ -6876,7 +7092,7 @@ function updatePlayer(dt){
   }
 
   /* ---- stance ---- */
-  const wantCrouch = !!(keys['ControlLeft']||keys['ControlRight']||keys['KeyC']);
+  const wantCrouch = !!(keys['ControlLeft']||keys['ControlRight']||keys['KeyC']) || (MMO_ON && MMO.sit);
   const speedNow = Math.hypot(player.vel.x, player.vel.z);
   const wantSprint = shiftDown && !wantCrouch && !player.ads &&
                      keys['KeyW'] && player.reloadT<=0;
@@ -7097,7 +7313,7 @@ function updatePlayer(dt){
   /* ---- reload ---- */
   if (player.reloadT>0){
     const before = player.reloadT;
-    player.reloadT -= dt;
+    player.reloadT -= dt / (MMO_ON ? MMO.mod(w.id).reload : 1);
     const total = w.reloadTime;
     const prog = 1 - player.reloadT/total;
     if (before/total > 0.62 && player.reloadT/total <= 0.62) SFX.magIn();
@@ -7116,6 +7332,7 @@ function updatePlayer(dt){
       const v = _fwd.clone(); v.y += 0.22; v.normalize().multiplyScalar(player.crouch ? 13 : 15.5);
       v.x += player.vel.x*0.6; v.z += player.vel.z*0.6;
       throwNade(from, v, 'player');
+      if (MMO_ON) MMO.nade(from, v);
       SFX.throwWhoosh();
     }
     if (player.throwT<=0) player.throwT = 0;
@@ -7406,6 +7623,7 @@ function openBrief(){
 
 function completeObjective(){
   if (G.objectiveDone || G.chargeArmed) return;
+  if (MMO_ON){ MMO.plant(); return; }
   FLAG.plant();
   UI.interact.classList.remove('on'); UI._near = false;
   if (OBJ.type==='flag'){
@@ -7527,7 +7745,7 @@ function restart(){
   startGame();
 }
 function endGame(win){
-  if (G.over) return;
+  if (G.over || MMO_ON) return;
   G.over=true; G.running=false; G.started=false;
   if (document.pointerLockElement) document.exitPointerLock();
   player.ads=false; player.adsK=0; player.adsEase=0;
@@ -7588,6 +7806,988 @@ allocTargets.onResize = ()=>{
 allocTargets.onResize();
 
 /* =========================================================================
+   20b. MMO MODE (?mmo=1) — the persistent co-operative shard
+   The shard (../mmo/shard) is modelled on Ryzom Core: it owns characters,
+   skills and XP, the defenders' hit points and respawns, loot, missions,
+   teams and chat. This side is the client: it logs in over a WebSocket (or
+   runs the shard inside the tab), streams the local soldier, draws everyone
+   else, and — when the shard names this tab the zone's simulation owner —
+   runs the French AI for the whole zone and streams it back up.
+   ========================================================================= */
+const VM_MAT = {
+  cloth : new THREE.MeshStandardMaterial({color:0x7a7650, roughness:.95, metalness:.0}),
+  webb  : new THREE.MeshStandardMaterial({color:0x5a5638, roughness:.94, metalness:.02}),
+  bag   : new THREE.MeshStandardMaterial({color:0x6b6642, roughness:.95, metalness:.02}),
+  skin  : new THREE.MeshStandardMaterial({color:0xa87a58, roughness:.86, metalness:.0}),
+  helm  : new THREE.MeshStandardMaterial({color:0x8d8a5c, roughness:.82, metalness:.0}),   // mũ cối under leaves
+  boot  : new THREE.MeshStandardMaterial({color:0x24221e, roughness:.92, metalness:.02}),   // dép cao su
+  gun   : new THREE.MeshStandardMaterial({color:0x34363a, roughness:.48, metalness:.16}),
+  wood  : new THREE.MeshStandardMaterial({color:0x6a4428, roughness:.70, metalness:.0}),
+  metal : new THREE.MeshStandardMaterial({color:0x7c7a6a, roughness:.5, metalness:.18})
+};
+linearizeMats(VM_MAT);
+
+const MMO = (()=>{
+  const WSK = ['smg','lmg','pistol','sniper'];
+  const SKILL_VI = { smg:'TIỂU LIÊN', lmg:'TRUNG LIÊN', pistol:'SÚNG NGẮN', sniper:'BẮN TỈA', nade:'LỰU ĐẠN' };
+  const UNLOCK_VI = { lmg:'Tiểu liên cấp 8', sniper:'Tiểu liên cấp 12 hoặc Súng ngắn cấp 10' };
+  const CH_VI = { say:'NÓI', shout:'HÉT', team:'TỔ', region:'TRẬN', universe:'TOÀN', tell:'RIÊNG', sys:'' };
+  const SHOP = [['nade','LỰU ĐẠN CHÀY',12,'Tối đa 6 quả.'],['bandage','BĂNG GẠC',8,'Phím H: hồi 40 sinh lực trong 4 giây. Tối đa 8.'],
+                ['ammo','CƠ SỐ ĐẠN',5,'Nạp đầy đạn dự trữ cho cả bốn khẩu súng.']];
+  const SS_KEY = 'dbp1954.mmo', NAME_KEY = 'dbp1954.mmo.name', URL_KEY = 'dbp1954.mmo.url';
+  const r2 = v => Math.round(v*100)/100;
+  const v3 = a => new THREE.Vector3(a[0], a[1], a[2]);
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+  const now = () => performance.now()/1000;
+  const $m = id => document.getElementById(id);
+
+  const M = {
+    inWorld:false, owner:false, ownerPid:0, pid:0, char:null, zones:[], sit:false,
+    obj:{ state:'locked', left:0, by:'' }, resetAt:0, openAt:0, plantAt:0,
+    team:[], teamId:0, lastTell:'', lastInvite:'', chan:'region', panel:null, missions:{avail:[], active:[]},
+    rtt:0, healLeft:0, healRate:0, dmgMulArr:[]
+  };
+  const remotes = new Map();             // pid -> proxy
+  const loots = new Map();               // id -> crate
+  let ws = null, localConn = null, mode = null, wsUrl = '', connected = false, retries = 0;
+  let posT = 0, posIdle = 0, hpT = 0, pingT = 0, stateT = 0, stateN = 0, retargetT = 0, shotT = 0, lastW = -1, lastHpSent = -1, lastPos = '';
+  const pickT = {}, lootT = {};
+
+  /* ------------------------------------------------------------- network */
+  function send(m){
+    if (ws && ws.readyState === 1) ws.send(JSON.stringify(m));
+    else if (localConn) localConn.send(m);
+  }
+  function defaultUrl(){
+    if (!/^https?:$/.test(location.protocol) || /github\.io$/.test(location.hostname)) return '';
+    return (location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/shard';
+  }
+  function openSocket(url){
+    return new Promise((resolve, reject)=>{
+      let s;
+      try { s = new WebSocket(url); } catch (err){ reject(err); return; }
+      const t = setTimeout(()=>{ try { s.close(); } catch {} reject(new Error('timeout')); }, 5000);
+      s.onopen = ()=>{ clearTimeout(t); ws = s; mode = 'ws'; wsUrl = url; connected = true; resolve(); };
+      s.onerror = ()=>{ clearTimeout(t); reject(new Error('socket')); };
+      s.onmessage = ev => { let m; try { m = JSON.parse(ev.data); } catch { return; } onMsg(m); };
+      s.onclose = ()=>{ if (ws === s){ ws = null; if (connected){ connected = false; lost(); } } };
+    });
+  }
+  async function openLocal(){
+    const mod = await import('../mmo/local.mjs');
+    localConn = mod.connectLocal(onMsg);
+    mode = 'local'; connected = true;
+  }
+  function saveSession(extra){
+    try { sessionStorage.setItem(SS_KEY, JSON.stringify(Object.assign({ mode, url: wsUrl }, extra))); } catch {}
+  }
+  function clearSession(){ try { sessionStorage.removeItem(SS_KEY); } catch {} }
+
+  /* ---------------------------------------------------------- login screen */
+  function boot(){
+    document.body.classList.add('mmo');
+    UI.startScreen.classList.add('hide');
+    $m('mmoScreen').classList.remove('hide');
+    $('pauseMenuBtn').textContent = 'ĐĂNG XUẤT';
+    try {
+      $m('mmoName').value = localStorage.getItem(NAME_KEY) || '';
+      $m('mmoUrl').value = localStorage.getItem(URL_KEY) || defaultUrl();
+    } catch { $m('mmoUrl').value = defaultUrl(); }
+    $m('mmoGo').addEventListener('click', e=>{ e.stopPropagation(); SFX.init(); login('ws'); });
+    $m('mmoLocal').addEventListener('click', e=>{ e.stopPropagation(); SFX.init(); login('local'); });
+    $m('mmoTabs').addEventListener('click', e=>{
+      const t = e.target.closest('[data-tab]'); if (!t) return;
+      e.stopPropagation();
+      if (t.dataset.tab === 'close') closePanel(); else openPanel(t.dataset.tab);
+    });
+    $m('mmoBody').addEventListener('click', onPanelClick);
+    $m('chatIn').addEventListener('blur', ()=>{ setTimeout(closeChat, 0); });
+    UI.pause.querySelector('.t').textContent = 'SẴN SÀNG';
+    UI.pause.querySelector('.s').textContent = 'BẤM ĐỂ VÀO TRẬN';
+    const why = decodeURIComponent((location.hash || '').slice(1));
+    if (why){ msg(why); history.replaceState(null, '', location.pathname + location.search); }
+    let ss = null;
+    try { ss = JSON.parse(sessionStorage.getItem(SS_KEY) || 'null'); } catch {}
+    if (ss) resume(ss);
+    else if (!$m('mmoUrl').value) msg('Không thấy máy chủ ở địa chỉ này — chọn SHARD CỤC BỘ để chơi ngay, hoặc nhập địa chỉ máy chủ.', true);
+  }
+  function msg(text, ok){ const el = $m('mmoMsg'); el.textContent = text || ''; el.classList.toggle('ok', !!ok); }
+  async function login(how){
+    const name = $m('mmoName').value.trim(), pass = $m('mmoPass').value, url = $m('mmoUrl').value.trim();
+    if (!/^[\p{L}\p{N}_]{3,16}$/u.test(name)){ msg('Tên 3–16 ký tự: chữ, số hoặc dấu gạch dưới.'); return; }
+    try { localStorage.setItem(NAME_KEY, name); if (url) localStorage.setItem(URL_KEY, url); } catch {}
+    disconnect();
+    msg('Đang kết nối…', true);
+    try {
+      if (how === 'local') await openLocal();
+      else {
+        if (!url){ msg('Nhập địa chỉ máy chủ (ws://…/shard) hoặc chọn SHARD CỤC BỘ.'); return; }
+        await openSocket(url);
+      }
+    } catch (err){
+      msg(how === 'local' ? 'Không tải được shard cục bộ (cần mở trang qua http, không phải file://).'
+                          : 'Không kết nối được ' + url + '. Máy chủ đã chạy chưa? (node mmo/server.mjs)');
+      return;
+    }
+    M.loginName = name;
+    send({ t:'login', name, pass });
+  }
+  async function resume(ss){
+    msg('Đang nối lại phiên…', true);
+    try {
+      if (ss.mode === 'local'){ await openLocal(); M.loginName = ss.name; send({ t:'login', name: ss.name, pass:'' }); }
+      else { await openSocket(ss.url); send({ t:'resume', token: ss.token }); }
+    } catch {
+      clearSession();
+      msg('Không nối lại được phiên trước — hãy đăng nhập.');
+    }
+  }
+  function disconnect(){
+    connected = false;
+    if (ws){ try { ws.close(); } catch {} ws = null; }
+    if (localConn){ try { localConn.close(); } catch {} localConn = null; }
+  }
+  function lost(){
+    if (!M.inWorld){ msg('Mất kết nối với máy chủ.'); return; }
+    sys('Mất kết nối với máy chủ — đang thử lại…');
+    const ss = (()=>{ try { return JSON.parse(sessionStorage.getItem(SS_KEY) || 'null'); } catch { return null; } })();
+    if (!ss || retries >= 4){ toBoot('Mất kết nối với máy chủ.'); return; }
+    retries++;
+    setTimeout(()=>{ openSocket(ss.url).then(()=> send({ t:'resume', token: ss.token })).catch(lost); }, 1500 * retries);
+  }
+  function toBoot(text){
+    clearSession(); disconnect();
+    M.inWorld = false; G.started = false; G.running = false;
+    if (document.pointerLockElement) document.exitPointerLock();
+    location.href = location.pathname + '?mmo=1&m=' + (LEVEL_IDX+1) + (text ? '#' + encodeURIComponent(text) : '');
+  }
+  function logout(){ clearSession(); disconnect(); location.href = location.pathname + '?mmo=1&m=' + (LEVEL_IDX+1); }
+  function travel(i){
+    if (i === LEVEL_IDX) return;
+    if (mode === 'local') saveSession({ name: M.char.name });
+    else saveSession({ token: M.token });
+    location.href = location.pathname + '?mmo=1&m=' + (i+1);
+  }
+
+  /* --------------------------------------------------------- the messages */
+  function onMsg(m){
+    const h = HANDLERS[m.t];
+    if (h) h(m);
+  }
+  const HANDLERS = {
+    welcome(m){
+      retries = 0;
+      M.pid = m.pid; M.token = m.token; M.char = m.char; M.zones = m.zones || [];
+      if (mode === 'local') saveSession({ name: m.char.name }); else saveSession({ token: m.token });
+      const explicit = /[?&]m=\d/.test(location.search);
+      if (!explicit && m.char.zone !== LEVEL_IDX){ travel(m.char.zone); return; }
+      msg('Đã vào máy chủ — đang hành quân tới ' + LV.name + '…', true);
+      send({ t:'join', zone: LEVEL_IDX });
+    },
+    loginFail(m){ if (m.expired) clearSession(); msg(m.text); disconnect(); $m('mmoScreen').classList.remove('hide'); },
+    kicked(m){ toBoot(m.text); },
+    err(m){ sys(m.text); },
+    pong(m){ M.rtt = performance.now() - m.c; },
+    char(m){ applyChar(m.char); },
+    joined: onJoined,
+    pjoin(m){ addRemote(m); sys(m.name + ' đã tới chiến trường.'); },
+    pleave(m){ const r = remotes.get(m.pid); if (r){ sys(r.name + ' đã rời chiến trường.'); removeRemote(m.pid); } },
+    snap(m){
+      for (const a of m.p){ const r = remotes.get(a[0]); if (r) netRemote(r, a); }
+      for (const a of m.n){
+        const e = enemies[a[0]];
+        if (!e || e.dead || a[7] !== e.gen || !e.puppet) continue;
+        const first = !e.net;
+        e.net = { x:a[1], y:a[2], z:a[3], yaw:a[4], st:a[5], fl:a[6] };
+        if (first){ e.obj.position.set(a[1], a[2], a[3]); e.yaw = a[4]; e.obj.visible = true; }
+      }
+    },
+    authority(m){ setOwner(!!m.on, m.npcs); },
+    owner(m){ M.ownerPid = m.pid; },
+    npcHp(m){
+      const e = enemies[m.i]; if (!e || e.dead) return;
+      e.hp = 100 * m.hp / e.hpMax;
+      e.tag.draw(e.hp, true);
+      if (m.by !== M.pid){
+        e.flinch = Math.min(1, e.flinch + (m.head ? 0.9 : 0.55));
+        const r = remotes.get(m.by);
+        if (M.owner && r && !r.T.dead){
+          e.alerted = true; e.tgt = r.T; e.lastSeen = 0;
+          if (e.state === ST.PATROL){ e.state = ST.ALERT; e.reactT = rand(0.2,0.4); }
+        }
+      }
+    },
+    npcDie(m){
+      const e = enemies[m.i]; if (!e || e.dead) return;
+      const mine = m.by === M.pid;
+      const from = mine ? player.pos : (remotes.get(m.by) || {}).obj?.position;
+      const dir = from ? new THREE.Vector3(e.obj.position.x - from.x, 0, e.obj.position.z - from.z).normalize() : null;
+      killEnemy(e, !!m.head, dir, !!m.blast, mine ? null : (m.name || '?'));
+      if (mine) showHitmark(true);
+    },
+    npcSpawn(m){
+      const e = enemies[m.i]; if (!e) return;
+      e.gen = m.gen; e.hpMax = m.hpMax;
+      reviveEnemy(e);
+    },
+    npcFire(m){
+      const e = enemies[m.i]; if (!e) return;
+      const from = v3(m.from), to = v3(m.to);
+      enemyMuzzleFlash(from);
+      spawnTracer(from, to, 0xff9a5a, 1.25);
+      const d = from.distanceTo(camera.position);
+      SFX.gunshot(e.rifle ? 'rifle' : 'pistol', clamp((from.x-camera.position.x)/16,-1,1), d);
+      if (m.dmg && !player.dead){ damagePlayer(m.dmg, e.obj.position); }
+      else if (to.distanceTo(camera.position) < 40) fxImpactWall(to, _up, to.distanceTo(camera.position), true);
+      if (e.puppet){ e.net && (e.net.st = ST.COMBAT); }
+    },
+    npcNade(m){ throwNade(v3(m.from), v3(m.vel), 'enemy'); },
+    npcSay(m){ const e = enemies[m.i]; pushComms(e ? e.name : 'PC GONO', m.fr, m.vi); SFX.radio(); },
+    objective(m){ applyObjective(m, false); },
+    xp(m){
+      gain(`+${m.gain} KN · ${SKILL_VI[m.skill] || m.skill}` + (m.repaid ? `  (trả nợ ${m.repaid})` : ''));
+    },
+    levelUp(m){
+      toast(`${(m.name||'').toUpperCase()} LÊN CẤP ${m.lv}!`, '#ffd23f');
+      if (m.unlocked && m.unlocked.length) toast('MỞ KHÓA: ' + m.unlocked.join(', ').toUpperCase(), '#9fdc7a');
+      sys(`Kỹ năng ${m.name} đạt cấp ${m.lv}.` + (m.hpUp > 0 ? ` Sinh lực tối đa +${m.hpUp}.` : ''));
+      SFX.bugle();
+      player.hpMax = m.hpMax; player.hp = m.hpMax; updateVitalsUI();
+    },
+    grant(m){
+      const g = m.gain || {};
+      if (M.char){ M.char.inv = m.inv; M.char.money = m.money; }
+      G.nades = m.inv.nade; updateNadeUI();
+      const bits = [];
+      if (g.money) bits.push(`+${g.money} ĐỒNG`);
+      if (g.nade) bits.push(`+${g.nade} LỰU ĐẠN`);
+      if (g.bandage) bits.push(`+${g.bandage} BĂNG GẠC`);
+      if (g.ammo){
+        for (const w of WEAPONS){ w.res = Math.max(w.res, w.maxReserve); }
+        updateAmmoUI(); bits.push('ĐẦY CƠ SỐ ĐẠN');
+      }
+      if (g.heal && !player.dead){
+        const b = player.hp; player.hp = Math.min(player.hpMax, player.hp + g.heal);
+        bits.push(`+${Math.round(player.hp-b)} SINH LỰC`); updateVitalsUI();
+      }
+      if (m.healOver){ M.healLeft += m.healOver; M.healRate = m.healOver / (m.over || 4); toast('BĂNG BÓ VẾT THƯƠNG…', '#9fdc7a'); }
+      if (bits.length && m.reason !== 'sync' && m.reason !== 'throw') toast(bits.join('  ·  '), m.reason === 'mission' ? '#ffd23f' : '#f2c14e');
+      if (m.reason === 'buy') SFX.pickup();
+      hudChar();
+      if (M.panel === 'shop' || M.panel === 'char') renderPanel();
+    },
+    death(m){
+      $m('mmoDeathD').textContent = m.debt > 0 ? `NỢ KINH NGHIỆM: ${m.debt} KN — trả dần bằng nửa số kinh nghiệm kiếm được` : 'Chưa tới kỹ năng 10 — chưa phải mang nợ kinh nghiệm.';
+      M.respawnAt = now() + (m.respawnIn || 6);
+    },
+    respawn(m){
+      player.dead = false; M.sit = false;
+      player.pos.set(m.x, terrainH(m.x, m.z), m.z); player.vel.set(0,0,0);
+      player.yaw = SPAWN.yaw; player.pitch = 0;
+      player.hp = m.hp; M.healLeft = 0;
+      for (const w of WEAPONS){ w.mag = w.magSize; w.res = Math.max(w.res, w.reserve); }
+      camera.rotation.z = 0; vmRoot.visible = true;
+      $m('mmoDeath').classList.remove('on');
+      G.lastHurt = 0;
+      updateVitalsUI(); updateAmmoUI();
+    },
+    pickup(m){
+      const p = PICKUPS[m.k]; if (!p) return;
+      p.taken = !m.on; p.mesh.visible = !!m.on;
+      if (!m.on && m.by === M.pid) SFX.pickup();
+    },
+    loot(m){ addLoot(m); },
+    lootGone(m){ const l = loots.get(m.id); if (l){ scene.remove(l.mesh); loots.delete(m.id); if (m.by === M.pid) SFX.pickup(); } },
+    shot(m){
+      const r = remotes.get(m.pid);
+      const from = v3(m.from), to = v3(m.to), w = WEAPONS[m.w] || WEAPONS[0];
+      enemyMuzzleFlash(from);
+      spawnTracer(from, to, w.id === 'sniper' ? 0xfff3c8 : 0xffd27a, w.id === 'sniper' ? 2.1 : 1);
+      const d = from.distanceTo(camera.position);
+      SFX.gunshot(w.sound, clamp((from.x-camera.position.x)/16,-1,1), d);
+      if (to.distanceTo(camera.position) < 45) fxImpactWall(to, _up, to.distanceTo(camera.position), true);
+      if (r){
+        r.fireT = 2.5;
+        /* the owner's defenders hear a friend's rifle the way they hear yours */
+        if (M.owner && (!r.alertAt || perfNow - r.alertAt > 550)){
+          r.alertAt = perfNow;
+          alertSquad(34, 3, e => pick([['TIRS AU '+bearingFR(e), 'súng nổ hướng '+bearingVI(e)], ['ON NOUS ATTAQUE !', 'bị tấn công']]),
+                     0.5, m.from[0], m.from[2]);
+        }
+      }
+    },
+    nade(m){ throwNade(v3(m.from), v3(m.vel), 'remote'); },
+    missions(m){ M.missions = m; if (M.panel === 'missions') renderPanel(); },
+    missionDone(m){
+      const r = m.reward || {};
+      toast('HOÀN THÀNH: ' + m.title.toUpperCase(), '#ffd23f');
+      sys(`Hoàn thành nhiệm vụ «${m.title}»: ${r.xp||0} KN, ${r.money||0} đồng.`);
+      SFX.bugle();
+    },
+    team(m){
+      M.teamId = m.id; M.team = m.members || [];
+      renderTeam();
+      for (const r of remotes.values()) retagRemote(r);
+    },
+    teamInvite(m){
+      M.lastInvite = m.from;
+      sys(`${m.from} mời bạn vào tổ đội — gõ /dongy để nhận.`);
+      toast('LỜI MỜI TỔ ĐỘI TỪ ' + m.from.toUpperCase(), '#9fdc7a');
+    },
+    chat(m){
+      if (m.ch === 'tell' && m.from !== M.char?.name) M.lastTell = m.from;
+      const who = m.ch === 'tell' ? (m.from === M.char?.name ? '→ ' + m.to : m.from) : m.from;
+      line(m.ch, `<i>${CH_VI[m.ch] || ''}</i><b>${esc(who)}:</b> ${esc(m.text)}`);
+    },
+    sys(m){ sys(m.text); },
+    who(m){
+      const by = {};
+      for (const q of m.list) by[q.zone] = (by[q.zone] || 0) + 1;
+      M.zones.forEach(z => z.players = by[z.idx] || 0);
+      if (M.whoPrint){
+        M.whoPrint = false;
+        sys(`${m.list.length} chiến sĩ trực tuyến: ` + m.list.map(q => `${q.name} (${q.rank}, ${(LEVELS[q.zone]||{}).code || '—'})`).join(', '));
+      }
+      if (M.panel === 'zones') renderPanel();
+    }
+  };
+
+  /* ------------------------------------------------------------ the zone */
+  function onJoined(m){
+    resetWorldState();
+    for (const r of [...remotes.keys()]) removeRemote(r);
+    for (const id of [...loots.keys()]) HANDLERS.lootGone({ id });
+    const at = m.at;
+    player.pos.set(at.x, at.y != null ? at.y : terrainH(at.x, at.z), at.z);
+    if (at.yaw != null) player.yaw = at.yaw;
+    applyChar(M.char);
+    player.hp = player.hpMax;
+    G.grace = 1.5;
+    M.dmgMulArr = m.dmgMul || [];
+    G.total = enemies.length;
+    for (const n of m.npcs){
+      const e = enemies[n.i]; if (!e) continue;
+      e.gen = n.gen; e.lvl = n.lvl; e.hpMax = n.hpMax; e.hp = 100 * n.hp / n.hpMax;
+      retagEnemy(e);
+      if (!n.alive){ hideDead(e); continue; }
+      if (n.known){ e.obj.position.set(n.x, n.y, n.z); e.yaw = n.yaw; e.obj.rotation.y = n.yaw; }
+    }
+    M.owner = false; M.ownerPid = m.owner;
+    setOwner(!!m.authority);
+    m.pickups.forEach((on, k)=>{ const p = PICKUPS[k]; if (p){ p.taken = !on; p.mesh.visible = !!on; } });
+    for (const l of m.loots) addLoot(l);
+    for (const q of m.players) addRemote(q);
+    applyObjective(m.objective, true);
+    buildQuartermaster();
+    /* in the world, but the pointer still needs a click to lock */
+    M.inWorld = true;
+    $m('mmoScreen').classList.add('hide');
+    UI.hud.classList.add('on');
+    G.started = true; G.over = false; G.running = false; G.paused = true;
+    UI.pause.classList.add('on');
+    hudChar();
+    sys(`Vào ${LV.name} — cấp địch ${LV_RANGE()}. ${m.players.length ? m.players.length + ' đồng chí đang ở đây.' : 'Chưa có ai khác ở đây.'}`);
+    sys('Enter để chat (/t tổ đội, /z cả trận, /u toàn máy chủ, /w tên — nói riêng, /moi tên — mời vào tổ). J nhiệm vụ, K kỹ năng.');
+    send({ t:'missions' });
+  }
+  const LV_RANGE = ()=>{ const z = M.zones[LEVEL_IDX]; return z ? z.level[0] + '–' + z.level[1] : '?'; };
+
+  function applyChar(c){
+    if (!c) return;
+    M.char = c;
+    player.hpMax = c.hpMax;
+    if (player.hp > player.hpMax) player.hp = player.hpMax;
+    G.maxNades = 6; G.nades = c.inv.nade;
+    UI.slots.forEach((s,i)=> s.classList.toggle('lock', !canUse(i)));
+    if (!canUse(player.weapon) && player.switchTo < 0) switchWeapon(0);
+    updateVitalsUI(); updateNadeUI();
+    hudChar();
+    if (M.panel === 'char' || M.panel === 'shop') renderPanel();
+  }
+  function canUse(i){ const c = M.char; return !c || !!(c.skills[WSK[i]] && c.skills[WSK[i]].open); }
+  function mod(id){ const c = M.char; return (c && c.mods && c.mods[id]) || { damage:1, spread:1, reload:1 }; }
+  function lockedWeapon(i){
+    if (perfNow - (M.lockMsgAt||0) < 900) return;
+    M.lockMsgAt = perfNow;
+    toast(`${WEAPONS[i].name} — CẦN ${(UNLOCK_VI[WSK[i]]||'').toUpperCase()}`, '#ff8a6a');
+  }
+
+  /* enemies */
+  function retagEnemy(e){
+    const best = M.char ? M.char.best : 1;
+    const col = e.lvl <= best - 6 ? '#8fd47a' : (e.lvl >= best + 5 ? '#ffae6a' : '#e9eef3');
+    e.obj.remove(e.tag.sprite); e.tag.tex.dispose();
+    e.tag = makeTag(`[${e.lvl}] ${e.name}`, col);
+    e.obj.add(e.tag.sprite);
+    e.tag.draw(e.hp, e.alerted);
+  }
+  function hideDead(e){
+    e.dead = true; e.hp = 0; e.state = ST.DEAD; e.deathT = 1;
+    e.obj.visible = false; e.tag.sprite.visible = false;
+    rebuildHitMeshes();
+  }
+  function reviveEnemy(e){
+    const p = e.p;
+    if (e.gunDropped || p.gun.parent !== p.rig){ p.rig.add(p.gun); }
+    e.gunDropped = false; e.gunVel = null;
+    p.model.rotation.set(0,0,0); p.model.position.set(0,0,0);
+    Object.assign(e, { dead:false, hp:100, state:ST.PATROL, deathT:0, alerted:false, canSee:false, lastSeen:99, hunt:0,
+                       flinch:0, speed:0, rounds:e.rifle?5:32, reloadT:0, burst:0, suppress:0, cover:null, tgt:null,
+                       engage:0, reactT:0, saidLost:false, net:null, _sent:null });
+    /* back at the far end of his beat, the same spot every screen picks */
+    let k0 = 0;
+    for (let k=0;k<e.route.length;k++){
+      if (Math.hypot(e.route[k][0]-SPAWN.x, e.route[k][1]-SPAWN.z) > Math.hypot(e.route[k0][0]-SPAWN.x, e.route[k0][1]-SPAWN.z)) k0 = k;
+    }
+    const s = e.route[k0];
+    e.wp = (k0+1) % e.route.length;
+    e.obj.position.set(s[0], groundAt(s[0], s[1], terrainH(s[0],s[1])+0.5), s[1]);
+    e.obj.visible = true;
+    e.puppet = !M.owner;
+    retagEnemy(e);
+    rebuildHitMeshes();
+    updateObjectiveUI();
+  }
+  function setOwner(on){
+    const was = M.owner;
+    M.owner = on;
+    if (on) M.ownerPid = M.pid;
+    for (const e of enemies){
+      if (on){
+        if (e.puppet && !e.dead){
+          /* pick the AI up where the stream left it */
+          e.state = ST.PATROL; e.alerted = false; e.tgt = null; e.cover = null; e.lastSeen = 99;
+          let best = 0, bd = Infinity;
+          e.route.forEach((r,k)=>{ const d = Math.hypot(r[0]-e.obj.position.x, r[1]-e.obj.position.z); if (d < bd){ bd = d; best = k; } });
+          e.wp = best;
+        }
+        e.puppet = false; e._sent = null;
+      } else {
+        e.puppet = true;
+        e.net = e.dead ? null : { x:e.obj.position.x, y:e.obj.position.y, z:e.obj.position.z, yaw:e.yaw, st:e.state, fl:e.alerted?1:0 };
+      }
+    }
+    if (on && !was && M.inWorld) sys('Máy của bạn đang mô phỏng quân địch ở chiến trường này.');
+  }
+  function puppetStep(e, dt){
+    const t = e.net;
+    if (!t){ e.speed = damp(e.speed, 0, 8, dt); return; }
+    const o = e.obj.position, bx = o.x, bz = o.z;
+    if (Math.hypot(t.x-o.x, t.z-o.z) > 6) o.set(t.x, t.y, t.z);
+    else { const k = 1 - Math.exp(-dt*10); o.x += (t.x-o.x)*k; o.y += (t.y-o.y)*k; o.z += (t.z-o.z)*k; }
+    let dy = t.yaw - e.yaw; while (dy > PI) dy -= PI*2; while (dy < -PI) dy += PI*2;
+    e.yaw += dy * Math.min(1, dt*10); e.obj.rotation.y = e.yaw;
+    e.speed = damp(e.speed, Math.min(4, Math.hypot(o.x-bx, o.z-bz)/Math.max(dt,1e-3)), 8, dt);
+    e.state = t.st === ST.DEAD ? ST.PATROL : t.st;
+    const al = !!(t.fl & 1);
+    if (al !== e.alerted){ e.alerted = al; e.tag.draw(e.hp, al); }
+    e.canSee = !!(t.fl & 2);
+    if (e.flinch > 0) e.flinch = Math.max(0, e.flinch - dt*3.2);
+    e.aimPitch = damp(e.aimPitch || 0, 0, 4, dt);
+  }
+  function dmgMul(e){ return M.dmgMulArr[e.idx] || 1; }
+
+  /* the owner's half: targets, the AI and the stream */
+  function simulate(dt){
+    retargetT -= dt;
+    if (retargetT <= 0){
+      retargetT = 0.5;
+      const cand = [];
+      if (!LOCAL_T.dead) cand.push(LOCAL_T);
+      for (const r of remotes.values()) if (!r.T.dead) cand.push(r.T);
+      for (const e of enemies){
+        if (e.dead) continue;
+        if (e.tgt && !e.tgt.dead && e.canSee && (e.tgt.local || remotes.has(e.tgt.pid))) continue;
+        let best = null, bd = Infinity;
+        for (const T of cand){ const d = e.obj.position.distanceToSquared(T.pos); if (d < bd){ bd = d; best = T; } }
+        e.tgt = best || LOCAL_T;
+      }
+    }
+    updateCombatDirector();
+    for (const e of enemies) updateEnemy(e, dt);
+    stateT -= dt;
+    if (stateT <= 0){
+      stateT = 0.1;
+      const full = (++stateN % 10) === 0, l = [];
+      for (const e of enemies){
+        if (e.dead) continue;
+        const o = e.obj.position, fl = (e.alerted?1:0) | (e.canSee?2:0), s = e._sent;
+        if (full || !s || Math.abs(o.x-s.x) > 0.03 || Math.abs(o.z-s.z) > 0.03 || Math.abs(o.y-s.y) > 0.05 ||
+            Math.abs(e.yaw-s.yaw) > 0.05 || e.state !== s.st || fl !== s.fl){
+          l.push([e.idx, r2(o.x), r2(o.y), r2(o.z), r2(e.yaw), e.state, fl, e.gen]);
+          e._sent = { x:o.x, y:o.y, z:o.z, yaw:e.yaw, st:e.state, fl };
+        }
+      }
+      if (l.length) send({ t:'npcState', l });
+    }
+  }
+  function npcFired(e, muzzle, end, dealt){
+    if (!M.owner) return;
+    const hit = dealt > 0 && !AIT.local && !AIT.dead;
+    send({ t:'npcFire', i:e.idx, from:[r2(muzzle.x), r2(muzzle.y), r2(muzzle.z)], to:[r2(end.x), r2(end.y), r2(end.z)],
+           tgt: hit ? AIT.pid : 0, dmg: hit ? r2(dealt) : 0 });
+  }
+  function npcNade(e, from, vel){ if (M.owner) send({ t:'npcNade', i:e.idx, from:[r2(from.x), r2(from.y), r2(from.z)], vel:[r2(vel.x), r2(vel.y), r2(vel.z)] }); }
+  function npcSay(e, fr, vi){ if (M.owner) send({ t:'npcSay', i: e ? e.idx : -1, fr, vi }); }
+
+  /* the local soldier's half */
+  function claimHit(e, dmg, head, blast){
+    send({ t:'hit', i:e.idx, dmg:r2(dmg), head: head?1:0, w: blast ? 'nade' : player.weapon, gen:e.gen });
+  }
+  function shot(from, to, w){
+    if (!to || perfNow - shotT < 80) return;
+    shotT = perfNow;
+    send({ t:'shot', from:[r2(from.x), r2(from.y), r2(from.z)], to:[r2(to.x), r2(to.y), r2(to.z)], w });
+  }
+  function nade(from, v){ send({ t:'nade', from:[r2(from.x), r2(from.y), r2(from.z)], vel:[r2(v.x), r2(v.y), r2(v.z)] }); }
+  function died(){
+    M.sit = false; M.healLeft = 0;
+    send({ t:'died' });
+    $m('mmoDeathD').textContent = '';
+    $m('mmoDeath').classList.add('on');
+    M.respawnAt = now() + 6;
+    vmRoot.visible = false;
+  }
+  function deathCam(dt){
+    mouseDX = mouseDY = 0;
+    camera.position.y = damp(camera.position.y, player.pos.y + 0.35, 3, dt);
+    camera.rotation.z = damp(camera.rotation.z, 0.42, 2.4, dt);
+    camera.rotation.x = damp(camera.rotation.x, -0.25, 2, dt);
+    const left = Math.max(0, Math.ceil((M.respawnAt || 0) - now()));
+    $m('mmoDeathS').textContent = left > 0 ? `QUÂN Y ĐANG TỚI · HỒI SINH SAU ${left} GIÂY` : 'ĐANG HỒI SINH…';
+  }
+  function touchPickup(k){
+    const t = now();
+    if (t - (pickT[k] || 0) < 1) return;
+    pickT[k] = t;
+    send({ t:'pickup', k });
+  }
+  function plant(){
+    if (M.obj.state !== 'open' || now() - M.plantAt < 2) return;
+    M.plantAt = now();
+    send({ t:'plant' });
+  }
+  function applyObjective(o, quiet){
+    const prev = M.obj.state;
+    M.obj = { state:o.state, left: o.left != null ? o.left : M.obj.left, by:o.by || '' };
+    if (o.state === 'locked'){
+      if (prev !== 'locked' && (G.objUnlocked || G.objectiveDone)){
+        FLAG.reset(); FIRES.length = FIRE_COUNT0;
+        G.objUnlocked = false; G.objectiveDone = false; G.chargeArmed = false;
+        if (!quiet && o.reset){ toast('QUÂN PHÁP PHẢN KÍCH — GIỮ VỮNG TRẬN ĐỊA!', '#ff8a6a'); SFX.alarm(false); }
+      }
+    } else if (o.state === 'open'){
+      M.openAt = now();
+      if (!G.objUnlocked){ if (quiet){ G.objUnlocked = true; } else unlockObjective(); }
+    } else if (o.state === 'captured'){
+      M.resetAt = now() + (o.reset || 60);
+      G.objUnlocked = true;
+      if (!G.objectiveDone){
+        G.objectiveDone = true;
+        if (!(quiet && OBJ.type === 'charge')) FLAG.plant();
+        if (!quiet){
+          toast((o.by || 'ĐỒNG ĐỘI').toUpperCase() + (OBJ.type === 'charge' ? ' ĐÃ ĐẶT BỘC PHÁ!' : ' ĐÃ CẮM CỜ «QUYẾT CHIẾN QUYẾT THẮNG»!'), '#ffd23f');
+          SFX.bugle();
+        }
+      }
+    }
+    updateObjectiveUI();
+  }
+  function objectiveUI(){
+    const o = M.obj;
+    UI.objective.classList.toggle('flag', o.state === 'open');
+    if (o.state === 'open') UI.objective.innerHTML = `<span class="star"></span>${OBJ.label}`;
+    else if (o.state === 'captured'){
+      const s = Math.max(0, Math.ceil(M.resetAt - now()));
+      UI.objective.innerHTML = `<span class="star"></span>ĐÃ CHIẾM · PHẢN KÍCH SAU <b>${s}</b>S`;
+    } else {
+      const left = enemies.reduce((n,e)=> n + (e.dead?0:1), 0);
+      UI.objective.innerHTML = `<b>${left}</b> / ${enemies.length} QUÂN ĐỊCH CÒN TRỤ`;
+    }
+  }
+
+  /* ------------------------------------------------------ other players */
+  function addRemote(q){
+    if (q.pid === M.pid) return;
+    if (remotes.has(q.pid)) removeRemote(q.pid);
+    const parts = buildEnemyModel(q.w === 1 || q.w === 3, VM_MAT);
+    const obj = new THREE.Group(); obj.add(parts.model);
+    obj.position.set(q.x, q.y || terrainH(q.x, q.z), q.z);
+    scene.add(obj);
+    const r = { pid:q.pid, name:q.name, best:q.best, rank:q.rank, obj, p:parts, tag:null, mate:null,
+                speed:0, walkPhase:rand(0,7), combatBlend:0, aimPitch:0, flinch:0, state:ST.PATROL, yaw:q.yaw||0,
+                net:{ x:q.x, y:q.y, z:q.z, yaw:q.yaw||0, pitch:0, fl:q.fl||0, w:q.w||0 }, fireT:0, hp:100, prev:new THREE.Vector3() };
+    r.T = { local:false, pid:q.pid, pos:obj.position, vel:new THREE.Vector3(), crouch:false, height:STAND_H, dead:false };
+    r.prev.copy(obj.position);
+    remotes.set(q.pid, r);
+    retagRemote(r);
+  }
+  function retagRemote(r){
+    const mate = M.team.some(m => m.pid === r.pid);
+    if (r.tag && r.mate === mate) return;
+    r.mate = mate;
+    if (r.tag){ r.obj.remove(r.tag.sprite); r.tag.tex.dispose(); }
+    r.tag = makeTag(`${r.name} · ${r.best}`, mate ? '#9fdc7a' : '#f2d18a');
+    r.obj.add(r.tag.sprite);
+    r.tag.draw(r.hp, false);
+  }
+  function removeRemote(pid){
+    const r = remotes.get(pid); if (!r) return;
+    scene.remove(r.obj); r.tag.tex.dispose();
+    remotes.delete(pid);
+    for (const e of enemies) if (e.tgt === r.T) e.tgt = null;
+  }
+  function netRemote(r, a){
+    r.net = { x:a[1], y:a[2], z:a[3], yaw:a[4], pitch:a[5], fl:a[6], w:a[7] };
+  }
+  function updateRemotes(dt){
+    for (const r of remotes.values()){
+      const t = r.net, o = r.obj.position;
+      r.prev.copy(o);
+      if (Math.hypot(t.x-o.x, t.z-o.z) > 8) o.set(t.x, t.y, t.z);
+      else { const k = 1 - Math.exp(-dt*12); o.x += (t.x-o.x)*k; o.y += (t.y-o.y)*k; o.z += (t.z-o.z)*k; }
+      /* the camera looks down -Z at yaw 0; the rig faces -Z too */
+      let dy = t.yaw - r.yaw; while (dy > PI) dy -= PI*2; while (dy < -PI) dy += PI*2;
+      r.yaw += dy * Math.min(1, dt*12); r.obj.rotation.y = r.yaw;
+      r.T.vel.set((o.x-r.prev.x)/Math.max(dt,1e-3), 0, (o.z-r.prev.z)/Math.max(dt,1e-3));
+      r.speed = damp(r.speed, Math.min(5, Math.hypot(r.T.vel.x, r.T.vel.z)), 8, dt);
+      const crouch = !!(t.fl & 1), dead = !!(t.fl & 2);
+      r.T.crouch = crouch; r.T.height = crouch ? CROUCH_H : STAND_H; r.T.dead = dead;
+      r.fireT -= dt;
+      r.state = (r.fireT > 0 || (t.fl & 4)) ? ST.COMBAT : ST.PATROL;
+      r.aimPitch = clamp(t.pitch || 0, -0.7, 0.7);
+      animateEnemy(r, dt);
+      r.p.model.scale.y = damp(r.p.model.scale.y, crouch && !dead ? 0.7 : 1, 10, dt);
+      if (dead){ r.p.model.rotation.x = PI*0.49; r.p.model.position.y = -0.1; r.tag.sprite.visible = false; }
+      else r.p.model.position.y = 0;
+    }
+  }
+  function renderTeam(){
+    const el = $m('teamFrame');
+    el.innerHTML = M.team.filter(m => m.pid !== M.pid).map(m =>
+      `<div class="tm${m.dead?' dead':''}">${esc(m.name)}${m.leader?' ★':''}<small>${m.zone === LEVEL_IDX ? '' : ((LEVELS[m.zone]||{}).code || '—')}</small>
+       <div class="b"><span style="width:${Math.round(100*clamp(m.hp/(m.hpMax||100),0,1))}%"></span></div></div>`).join('');
+    for (const m of M.team){ const r = remotes.get(m.pid); if (r){ r.hp = 100*m.hp/(m.hpMax||100); r.tag.draw(r.hp, false); } }
+  }
+
+  /* -------------------------------------------------------- loot crates */
+  const LOOT_MAT = plainMat(MAT.crate);
+  function addLoot(l){
+    if (loots.has(l.id)) return;
+    const g = new THREE.Group();
+    const box = new THREE.Mesh(new THREE.BoxGeometry(0.46,0.30,0.32), LOOT_MAT); box.castShadow = true; g.add(box);
+    const band = new THREE.Mesh(new THREE.BoxGeometry(0.47,0.05,0.33), PICKUP_MATS.band); g.add(band);
+    const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map:TEX.glow, transparent:true, depthWrite:false,
+      blending:THREE.AdditiveBlending, color:0xffe08a, opacity:0.45 }));
+    glow.scale.set(1.2,1.2,1); g.add(glow);
+    const y = groundAt(l.x, l.z, (l.y || 0) + 1.2) + 0.16;
+    g.position.set(l.x, y, l.z); g.rotation.y = rand(0, 6);
+    scene.add(g);
+    loots.set(l.id, { id:l.id, x:l.x, y, z:l.z, owners:new Set(l.owners || []), mesh:g, glow, t:rand(0,6), born:now() });
+  }
+  function updateLoots(dt){
+    for (const l of loots.values()){
+      l.t += dt;
+      const mine = l.owners.has(M.pid) || now() - l.born > 20;
+      l.glow.material.opacity = mine ? 0.32 + 0.18*Math.sin(l.t*3.2) : 0.12;
+      if (!G.running || player.dead || !mine) continue;
+      if (Math.hypot(player.pos.x-l.x, player.pos.z-l.z) < 1.5 && Math.abs(player.pos.y-l.y) < 1.6){
+        if (now() - (lootT[l.id] || 0) > 1){ lootT[l.id] = now(); send({ t:'loot', id:l.id }); }
+      }
+    }
+  }
+
+  /* --------------------------------------- the quartermaster at the rally */
+  let QM = null;
+  function buildQuartermaster(){
+    if (QM) return;
+    const parts = buildEnemyModel(true, VM_MAT);
+    const obj = new THREE.Group(); obj.add(parts.model);
+    /* a couple of metres ahead and to the right of where you come in */
+    const sy = Math.sin(SPAWN.yaw), cy = Math.cos(SPAWN.yaw);
+    const ax = SPAWN.x - sy*3.4 + cy*3.2, az = SPAWN.z - cy*3.4 - sy*3.2;
+    const f = nearestFree(ax, az, 0.5, 1.7, 5);
+    obj.position.set(f[0], groundAt(f[0], f[1], terrainH(f[0], f[1]) + 0.5), f[1]);
+    obj.rotation.y = SPAWN.yaw + PI;
+    scene.add(obj);
+    const tag = makeTag('QUÂN NHU', '#ffd23f'); obj.add(tag.sprite);
+    tag.draw(100, false);
+    QM = { obj, p:parts, tag, speed:0, walkPhase:0, combatBlend:0, aimPitch:0, flinch:0, state:ST.PATROL };
+  }
+
+  /* ------------------------------------------------------------- chat */
+  function line(ch, html){
+    const log = $m('chatLog');
+    const d = document.createElement('div');
+    d.className = 'c-' + ch; d.innerHTML = html;
+    log.appendChild(d);
+    setTimeout(()=> d.classList.add('old'), 14000);
+    while (log.children.length > 40) log.firstChild.remove();
+  }
+  function sys(text){ line('sys', esc(text)); }
+  function openChat(prefix){
+    for (const k in keys) keys[k] = false;
+    player.triggerHeld = false; M.sit = M.sit && true;
+    $m('chat').classList.add('open');
+    const inp = $m('chatIn');
+    inp.value = prefix || ''; inp.placeholder = `[${CH_VI[M.chan]}] Enter gửi · Esc đóng · /help`;
+    inp.focus();
+  }
+  function closeChat(){
+    const c = $m('chat'); if (!c.classList.contains('open')) return;
+    c.classList.remove('open'); $m('chatIn').blur();
+  }
+  function submitChat(){
+    const raw = $m('chatIn').value.trim();
+    closeChat();
+    if (!raw) return;
+    if (raw[0] !== '/'){ send({ t:'chat', ch:M.chan, text:raw }); return; }
+    const [cmd, ...rest] = raw.slice(1).split(/\s+/);
+    const arg = rest.join(' ');
+    const CH = { s:'say', say:'say', sh:'shout', shout:'shout', t:'team', p:'team', z:'region', r2:'region', u:'universe' };
+    const c = cmd.toLowerCase();
+    if (CH[c]){ M.chan = CH[c]; if (arg) send({ t:'chat', ch:M.chan, text:arg }); else sys('Kênh: ' + CH_VI[M.chan]); return; }
+    switch (c){
+      case 'w': case 'tell': case 'pm': send({ t:'chat', ch:'tell', to:rest[0], text:rest.slice(1).join(' ') }); return;
+      case 'r': if (M.lastTell) send({ t:'chat', ch:'tell', to:M.lastTell, text:arg }); else sys('Chưa có ai nhắn riêng cho bạn.'); return;
+      case 'moi': case 'invite': send({ t:'team', op:'invite', name:arg }); return;
+      case 'dongy': case 'accept': send({ t:'team', op:'accept', name:arg || M.lastInvite }); return;
+      case 'roi': case 'leave': send({ t:'team', op:'leave' }); return;
+      case 'kick': send({ t:'team', op:'kick', name:arg }); return;
+      case 'who': case 'ai': M.whoPrint = true; send({ t:'who' }); return;
+      case 'help': case 'h':
+        sys('/s nói (16 m) · /sh hét (48 m) · /t tổ đội · /z cả chiến trường · /u toàn máy chủ · /w tên lời — nói riêng · /r trả lời');
+        sys('/moi tên — mời vào tổ · /dongy — nhận lời mời · /roi — rời tổ · /kick tên · /who — ai đang trực tuyến');
+        return;
+    }
+    sys('Lệnh không rõ: /' + cmd + ' — gõ /help.');
+  }
+
+  /* ---------------------------------------------------------- panels */
+  function panelOpen(){ return !!M.panel; }
+  function openPanel(tab){
+    M.panel = tab;
+    for (const d of $m('mmoTabs').children) d.classList.toggle('act', d.dataset.tab === tab);
+    $m('mmoPanel').classList.add('on');
+    UI.pause.classList.remove('on');
+    if (document.pointerLockElement) document.exitPointerLock();
+    if (tab === 'missions') send({ t:'missions' });
+    if (tab === 'zones') send({ t:'who' });
+    renderPanel();
+  }
+  function closePanel(){
+    if (!M.panel) return;
+    M.panel = null;
+    $m('mmoPanel').classList.remove('on');
+    if (G.started) requestLock();
+  }
+  function renderPanel(){
+    const b = $m('mmoBody'), c = M.char;
+    if (!c || !M.panel) return;
+    if (M.panel === 'missions'){
+      const act = M.missions.active || [], av = (M.missions.avail || []).filter(m => !m.active);
+      const rw = r => `${r.xp||0} KN · ${r.money||0} ĐỒNG` + (r.items ? ' · ' + Object.entries(r.items).map(([k,v])=>`${v} ${({nade:'LỰU ĐẠN',bandage:'BĂNG GẠC'})[k]||k}`).join(' · ') : '');
+      b.innerHTML = `<h3>ĐANG THỰC HIỆN (${act.length}/3)</h3>` +
+        (act.length ? act.map(m => `<div class="mcard"><div class="tt">${esc(m.title)} <small style="opacity:.5">${esc((LEVELS[m.zone]||{}).code||'')}</small></div>
+          ${m.steps.map((s,k)=>`<div class="st ${k<m.step?'done':(k===m.step?'cur':'')}">▸ ${esc(s.text)}${s.n>1?` — ${s.done}/${s.n}`:''}</div>`).join('')}
+          <button class="alt" data-act="abandon" data-id="${m.id}">BỎ</button></div>`).join('')
+          : '<div class="mcard"><div class="ds">Chưa nhận nhiệm vụ nào.</div></div>') +
+        `<h3>NHIỆM VỤ Ở ${esc(LV.name.toUpperCase())}</h3>` +
+        (av.length ? av.map(m => {
+          const cd = m.cooldown > 0, lv = c.best < m.minLevel;
+          return `<div class="mcard"><div class="tt">${esc(m.title)}</div><div class="ds">${esc(m.desc)}</div>
+            <div class="rw">PHẦN THƯỞNG: ${rw(m.reward)}${m.minLevel>1?` · CẦN KỸ NĂNG ${m.minLevel}`:''}${cd?` · NHẬN LẠI SAU ${Math.ceil(m.cooldown/60)} PHÚT`:''}</div>
+            <button data-act="accept" data-id="${m.id}" ${cd||lv||act.length>=3?'disabled':''}>NHẬN</button></div>`; }).join('')
+          : '<div class="mcard"><div class="ds">Đã nhận hết nhiệm vụ ở chiến trường này.</div></div>');
+    } else if (M.panel === 'char'){
+      const s = c.stats || {}, played = Math.round((s.played||0)/60);
+      b.innerHTML = `<h3>${esc(c.name.toUpperCase())} · ${esc(c.rank.toUpperCase())}</h3>
+        <div class="kv"><div><b>${c.best}</b><span>KỸ NĂNG CAO NHẤT</span></div><div><b>${c.hpMax}</b><span>SINH LỰC TỐI ĐA</span></div>
+        <div><b>${c.regen.action.toFixed(1)}/${c.regen.sit.toFixed(1)}</b><span>HỒI MÁU/GIÂY · NGỒI</span></div><div><b style="color:${c.debt>0?'#ff8a78':'#fff'}">${c.debt}</b><span>NỢ KINH NGHIỆM</span></div>
+        <div><b>${s.kills||0}</b><span>TIÊU DIỆT</span></div><div><b>${s.heads||0}</b><span>TRÚNG ĐẦU</span></div>
+        <div><b>${s.captures||0}</b><span>CẮM CỜ</span></div><div><b>${s.deaths||0}</b><span>LẦN NGÃ · ${played} PHÚT</span></div></div>
+        <h3>CÂY KỸ NĂNG</h3><div class="sgrid">` +
+        Object.entries(c.skills).map(([id, k]) => {
+          const md = c.mods[id], pct = Math.round(100*k.xp/k.next);
+          return `<div class="n ${k.open?'':'lock'}">${k.name.toUpperCase()}${k.open?'':' 🔒'}</div><div class="l">${k.open?k.lv:'—'}</div>
+            <div>${k.open?`<div class="bar2"><span style="width:${pct}%"></span></div>`:`<span class="m">Mở khi đạt ${UNLOCK_VI[id]||''}</span>`}</div>
+            <div class="m">${k.open ? `${k.xp}/${k.next} KN` + (md ? ` · +${Math.round((md.damage-1)*100)}% SÁT THƯƠNG` : '') : ''}</div>`;
+        }).join('') + `</div>
+        <h3>CÁCH TIẾN BỘ</h3><div class="ds" style="font-size:11.5px;color:rgba(236,228,214,.6)">Kinh nghiệm vào đúng kỹ năng của khẩu súng đã bắn hạ địch. Địch cấp cao hơn cho nhiều hơn,
+        địch thấp hơn 15 cấp không cho gì. Trong tổ đội, chỉ tổ gây sát thương nhiều nhất được nhận và chia theo 1 + 0,9 × (số người − 1);
+        ai ở xa hơn 50 m không được phần. Kỹ năng lên cấp sẽ hồi đầy sinh lực.</div>`;
+    } else if (M.panel === 'shop'){
+      const d = Math.hypot(player.pos.x-SPAWN.x, player.pos.z-SPAWN.z), near = d <= 9;
+      b.innerHTML = `<h3>TRẠM QUÂN NHU · ${c.money} ĐỒNG</h3>` +
+        (near ? '' : `<div class="mcard"><div class="ds">Bạn đang cách điểm tập kết ${Math.round(d)} m — chỉ mua được trong vòng 9 m.</div></div>`) +
+        SHOP.map(([id, name, price, desc]) => `<div class="shop"><div class="tt">${name} · ${price} ĐỒNG${c.inv[id]!=null?` <small style="opacity:.55">(ĐANG CÓ ${c.inv[id]})</small>`:''}</div>
+          <div class="ds">${desc}</div><button data-act="buy" data-id="${id}" ${!near||c.money<price?'disabled':''}>MUA</button></div>`).join('') +
+        `<h3>TIỀN TỪ ĐÂU</h3><div class="ds" style="color:rgba(236,228,214,.6)">Hòm chiến lợi phẩm rơi từ quân địch (20 giây đầu chỉ tổ đã hạ địch được nhặt) và phần thưởng nhiệm vụ.</div>`;
+    } else if (M.panel === 'zones'){
+      b.innerHTML = '<h3>NĂM CHIẾN TRƯỜNG · MỘT MÁY CHỦ</h3>' + M.zones.map(z => `<div class="zrow ${z.idx===LEVEL_IDX?'cur':''}">
+          <div class="tt">0${z.idx+1} · ${esc(z.name.toUpperCase())}</div>
+          <div class="ds">Địch cấp ${z.level[0]}–${z.level[1]} · ${z.players||0} chiến sĩ đang ở đây · ${esc(LEVELS[z.idx].date)}</div>
+          <button data-act="travel" data-id="${z.idx}" ${z.idx===LEVEL_IDX?'disabled':''}>${z.idx===LEVEL_IDX?'ĐANG Ở ĐÂY':'HÀNH QUÂN'}</button></div>`).join('');
+    }
+  }
+  function onPanelClick(e){
+    const bt = e.target.closest('button[data-act]'); if (!bt || bt.disabled) return;
+    e.stopPropagation();
+    const id = bt.dataset.id;
+    if (bt.dataset.act === 'accept') send({ t:'mission', op:'accept', id });
+    else if (bt.dataset.act === 'abandon') send({ t:'mission', op:'abandon', id });
+    else if (bt.dataset.act === 'buy') send({ t:'buy', item:id });
+    else if (bt.dataset.act === 'travel') travel(+id);
+  }
+
+  /* ---------------------------------------------------------- keys */
+  function onKey(e){
+    const tag = e.target && e.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA'){
+      if (e.target.id === 'chatIn'){
+        if (e.key === 'Enter'){ e.preventDefault(); submitChat(); }
+        else if (e.key === 'Escape') closeChat();
+      } else if (e.key === 'Enter' && !M.inWorld){ SFX.init(); login($m('mmoUrl').value.trim() ? 'ws' : 'local'); }
+      return true;
+    }
+    if (!M.inWorld) return false;
+    if (M.panel){
+      const map = { KeyJ:'missions', KeyK:'char', KeyB:'shop', KeyM:'zones' };
+      if (e.code === 'Escape' || map[e.code] === M.panel) closePanel();
+      else if (map[e.code]) openPanel(map[e.code]);
+      return true;
+    }
+    if (e.repeat) return false;
+    switch (e.code){
+      case 'Enter': case 'NumpadEnter': e.preventDefault(); openChat(''); return true;
+      case 'Slash': e.preventDefault(); openChat('/'); return true;
+      case 'KeyJ': openPanel('missions'); return true;
+      case 'KeyK': openPanel('char'); return true;
+      case 'KeyB': openPanel('shop'); return true;
+      case 'KeyM': openPanel('zones'); return true;
+      case 'KeyH':
+        if (player.dead) return true;
+        if (!M.char || M.char.inv.bandage <= 0) toast('HẾT BĂNG GẠC — MUA Ở TRẠM QUÂN NHU', '#ff8a6a');
+        else if (player.hp >= player.hpMax) toast('SINH LỰC ĐÃ ĐẦY', '#9fdc7a');
+        else send({ t:'use', item:'bandage' });
+        return true;
+      case 'KeyX':
+        if (player.dead) return true;
+        M.sit = !M.sit;
+        toast(M.sit ? 'NGỒI NGHỈ — HỒI SINH LỰC NHANH GẤP ĐÔI' : 'ĐỨNG DẬY', '#9fdc7a');
+        return true;
+    }
+    return false;
+  }
+
+  /* -------------------------------------------------------------- HUD */
+  function gain(text){
+    const box = $m('mmoGain'), d = document.createElement('div');
+    d.textContent = text; box.appendChild(d);
+    setTimeout(()=> d.remove(), 1800);
+    while (box.children.length > 4) box.firstChild.remove();
+  }
+  function hudChar(){
+    const c = M.char; if (!c) return;
+    const sk = WSK[player.weapon], s = c.skills[sk];
+    $m('mmoRank').textContent = c.rank.toUpperCase();
+    $m('mmoName2').textContent = c.name;
+    $m('mmoMoney').textContent = c.money + ' ĐỒNG';
+    $m('mmoSkill').textContent = `${SKILL_VI[sk]} · CẤP ${s.lv}`;
+    $m('mmoXpNum').innerHTML = c.debt > 0 ? `<span class="debt">NỢ ${c.debt} KN</span> · ${s.xp} / ${s.next} KN` : `${s.xp} / ${s.next} KN`;
+    $m('mmoXpFill').style.width = (100*clamp(s.xp/s.next,0,1)) + '%';
+    $m('mmoDebt').style.width = (100*clamp(c.debt/s.next,0,1)) + '%';
+    $m('mmoBand').textContent = 'BĂNG GẠC ×' + c.inv.bandage;
+  }
+  function hud(){
+    if (!M.inWorld) return;
+    const z = M.zones[LEVEL_IDX];
+    UI.timer.textContent = 'ĐỊCH CẤP ' + LV_RANGE();
+    const n = remotes.size + 1;
+    const el = UI._mmoNet || (UI._mmoNet = (()=>{ const d = document.createElement('div'); d.id = 'mmoNet'; $('top').appendChild(d); return d; })());
+    el.innerHTML = `<b>${n}</b> CHIẾN SĨ · ${mode === 'local' ? 'SHARD CỤC BỘ' : Math.round(M.rtt) + ' MS'}${M.owner ? ' · <span class="own">MÁY BẠN ĐIỀU KHIỂN ĐỊCH</span>' : ''}`;
+    if (M.obj.state === 'captured') objectiveUI();
+    const sit = $m('mmoSit'); const st = M.sit ? 'ĐANG NGỒI' : 'NGỒI';
+    if (sit.textContent !== st) sit.textContent = st;
+    /* the quartermaster's hint */
+    const dq = Math.hypot(player.pos.x-SPAWN.x, player.pos.z-SPAWN.z) < 6 && !player.dead;
+    const hint = $m('mmoHint');
+    if (dq !== hint.classList.contains('on')){
+      hint.classList.toggle('on', dq);
+      hint.innerHTML = '<kbd>B</kbd> QUÂN NHU &nbsp; <kbd>J</kbd> NHIỆM VỤ &nbsp; <kbd>M</kbd> CHIẾN TRƯỜNG';
+    }
+    if (z) z.players = n;
+  }
+  function drawMap(ctx){
+    for (const l of loots.values()){
+      ctx.fillStyle = '#ffe08a'; ctx.fillRect(l.x-0.6, l.z-0.6, 1.2, 1.2);
+    }
+    ctx.fillStyle = '#9fdc7a'; ctx.fillRect(SPAWN.x-1, SPAWN.z-1, 2, 2);
+    for (const r of remotes.values()){
+      const p = r.obj.position;
+      ctx.fillStyle = r.T.dead ? 'rgba(160,160,160,.6)' : (r.mate ? '#5fd06a' : '#8fd3e8');
+      ctx.beginPath(); ctx.arc(p.x, p.z, r.mate ? 1.6 : 1.3, 0, 7); ctx.fill();
+    }
+  }
+
+  /* --------------------------------------------------- per-frame driver */
+  function frame(dt){
+    if (!M.inWorld) return;
+    if (!G.running){ G.enemyNadeT -= dt; if (G.grace > 0) G.grace -= dt; }
+    else if (!M.entered){
+      M.entered = true;
+      UI.pause.querySelector('.t').textContent = 'TẠM RỜI TRẬN';
+      UI.pause.querySelector('.s').textContent = 'CHIẾN TRƯỜNG VẪN TIẾP DIỄN · BẤM ĐỂ QUAY LẠI';
+    }
+    /* the defenders: run them, or follow whoever runs them */
+    if (M.owner) simulate(dt);
+    else for (const e of enemies) updateEnemy(e, dt);
+    updateRemotes(dt);
+    updateLoots(dt);
+    if (QM){ animateEnemy(QM, dt); QM.tag.sprite.visible = G.started && camera.position.distanceTo(QM.obj.position) < 30; }
+    /* weapon in hand is the skill being trained */
+    if (player.weapon !== lastW){ lastW = player.weapon; send({ t:'skill', skill:WSK[lastW] }); hudChar(); }
+    /* sitting ends the moment you move or shoot */
+    if (M.sit && (keys['KeyW']||keys['KeyA']||keys['KeyS']||keys['KeyD']||keys['Space']||player.triggerHeld)){ M.sit = false; }
+    /* regeneration, character.cpp: sitting regenerates faster than acting,
+       and here nothing comes back while you are still being shot at */
+    G.lastHurt = (G.lastHurt || 0) + dt;
+    if (!player.dead && player.hp < player.hpMax && M.char){
+      const rg = M.char.regen;
+      let rate = M.sit ? rg.sit : (G.lastHurt > rg.delay ? rg.action : 0);
+      if (M.healLeft > 0){ const h = Math.min(M.healLeft, M.healRate*dt); M.healLeft -= h; rate += h/dt; }
+      if (rate > 0){
+        player.hp = Math.min(player.hpMax, player.hp + rate*dt);
+        if (Math.round(player.hp) !== Math.round(player.hp - rate*dt)) updateVitalsUI();
+      }
+    }
+    /* uplink */
+    posT -= dt;
+    if (posT <= 0){
+      posT = 0.1;
+      const fl = (player.crouch?1:0) | (player.dead?2:0) | (player.ads?4:0) | (player.sprint?8:0) | (M.sit?16:0);
+      const p = [r2(player.pos.x), r2(player.pos.y), r2(player.pos.z)];
+      const key = p.join() + '|' + r2(player.yaw) + '|' + r2(player.pitch) + '|' + fl + '|' + player.weapon;
+      /* nothing new is not sent, but a still soldier still checks in once a second */
+      if (key !== lastPos || ++posIdle >= 10){
+        lastPos = key; posIdle = 0;
+        send({ t:'pos', p, yaw:r2(player.yaw), pitch:r2(player.pitch), w:player.weapon, fl });
+      }
+    }
+    hpT -= dt;
+    if (hpT <= 0){ hpT = 1; const h = Math.round(player.hp); if (h !== lastHpSent){ lastHpSent = h; send({ t:'hp', hp:h }); } }
+    pingT -= dt;
+    if (pingT <= 0 && mode === 'ws'){ pingT = 2; send({ t:'ping', c:performance.now() }); }
+  }
+
+  return Object.assign(M, {
+    boot, logout, onKey, canUse, mod, lockedWeapon, panelOpen, shot, nade, touchPickup, plant, claimHit, died, deathCam,
+    dmgMul, npcFired, npcNade, npcSay, puppetStep, objectiveUI, frame, hud, drawMap, send,
+    remotes, loots                       // for tools/mmo-smoke.mjs
+  });
+})();
+
+/* =========================================================================
    21. MAIN LOOP
    ========================================================================= */
 let last = perfNow;
@@ -7611,7 +8811,8 @@ spawnEnemies();
 WEAPONS[0].vm.group.visible = true;
 updateVitalsUI(); updateAmmoUI(); updateNadeUI(); updateObjectiveUI(); layoutCrosshair();
 buildMenu();
-if (OPEN_BRIEF) openBrief();
+if (MMO_ON) MMO.boot();
+else if (OPEN_BRIEF) openBrief();
 UI.boot.classList.add('hide');
 
 function frame(now){
@@ -7628,15 +8829,17 @@ function frame(now){
   if (G.running && !G.over){
     G.elapsed += dt;
     /* the clock stops once the flag is going up or the fuse is lit */
-    if (!G.objectiveDone && !G.chargeArmed) G.time -= dt;
+    if (!MMO_ON && !G.objectiveDone && !G.chargeArmed) G.time -= dt;
     if (G.grace > 0) G.grace -= dt;
     G.enemyNadeT -= dt;
     G.visRange = lerp(ENV.visRange, 52, G.flareK||0);
-    updateIntro(dt);
-    updatePlayer(dt);
-    updateCombatDirector();
-    for (const e of enemies) updateEnemy(e, dt);
-    if (G.time<=0){ G.time=0; endGame(false); }
+    if (!MMO_ON) updateIntro(dt);
+    if (MMO_ON && player.dead) MMO.deathCam(dt); else updatePlayer(dt);
+    if (!MMO_ON){
+      updateCombatDirector();
+      for (const e of enemies) updateEnemy(e, dt);
+      if (G.time<=0){ G.time=0; endGame(false); }
+    }
   } else {
     mouseDX = mouseDY = 0;
     /* menu camera: a slow crane over the battlefield rather than a map
@@ -7657,6 +8860,10 @@ function frame(now){
       for (const e of enemies) e.tag.sprite.visible = false;
     }
   }
+
+  /* the shard never pauses: other players, the defenders and the network
+     keep going while this tab sits on the pause screen */
+  if (MMO_ON) MMO.frame(dt);
 
   /* always-running visual systems */
   dustField.time.value = now*0.001;
@@ -7686,7 +8893,8 @@ function frame(now){
   hudAccum += dt;
   if (hudAccum > 0.1){
     hudAccum = 0;
-    if (G.running){
+    if (MMO_ON) MMO.hud();
+    else if (G.running){
       const t = Math.max(0,G.time);
       UI.timer.textContent = Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0');
       UI.timer.classList.toggle('warn', t<30);
@@ -7697,7 +8905,7 @@ function frame(now){
 
   /* damage / low-health post uniforms */
   G.dmgFlash = damp(G.dmgFlash, 0, 4.2, dt);
-  const lowT = (G.running && player.hp<20 && player.hp>0) ? 1 : 0;
+  const lowT = (G.running && player.hp<player.hpMax*0.2 && player.hp>0) ? 1 : 0;
   G.lowPulse = damp(G.lowPulse, lowT, 3, dt);
   if (lowT){
     G.hbTimer -= dt;
