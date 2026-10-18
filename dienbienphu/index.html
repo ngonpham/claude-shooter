@@ -7901,7 +7901,9 @@ const MMO = (()=>{
       if (t.dataset.tab === 'close') closePanel(); else openPanel(t.dataset.tab);
     });
     $m('mmoBody').addEventListener('click', onPanelClick);
-    $m('chatIn').addEventListener('blur', ()=>{ setTimeout(closeChat, 0); });
+    /* a blur closes the box, unless it was reopened before the timer ran —
+       on a slow frame the next Enter can land first */
+    $m('chatIn').addEventListener('blur', ()=>{ setTimeout(()=>{ if (document.activeElement !== $m('chatIn')) closeChat(); }, 0); });
     UI.pause.querySelector('.t').textContent = 'SẴN SÀNG';
     UI.pause.querySelector('.s').textContent = 'BẤM ĐỂ VÀO TRẬN';
     const why = decodeURIComponent((location.hash || '').slice(1));
